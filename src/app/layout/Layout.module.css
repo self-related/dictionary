@@ -1,0 +1,39 @@
+.layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+
+.footer {
+    align-items: center;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    min-height: 2rem;
+    width: 100%;
+
+    & > p {
+        margin: 0;
+    }
+}
+
+.main {
+    flex-grow: 1;
+    padding: 1rem 3rem;
+    width: 100%;
+}
+
+.navbar {
+    align-items: center;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    min-height: 3rem;
+    width: 100%;
+    
+    & > p {
+        font-size: 2rem;
+        margin: 0;
+    }
+}

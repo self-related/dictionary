@@ -1,4 +1,10 @@
+import Layout from "./layout/Layout";
+
 export default function App() {
 
-    return 0;
+    return (
+        <Layout>
+            <p>Content</p>
+        </Layout>
+    );
 }
