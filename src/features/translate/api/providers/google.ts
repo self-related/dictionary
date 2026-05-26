@@ -1,4 +1,4 @@
-import type { LangList, LinkGetter } from "./types";
+import type { LangList, LinkGetter } from "../types";
 
 
 export const getGoogleUrl: LinkGetter = ({sourceText, sourceLang, targetLang}) => {

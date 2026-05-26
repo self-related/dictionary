@@ -1,4 +1,4 @@
-import { getGoogleUrl, googleLangList } from "./google";
+import { getGoogleUrl, googleLangList } from "./providers/google";
 import type { LangList, Providers } from "./types";
 
 
