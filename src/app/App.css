@@ -1,3 +1,11 @@
+*, ::after, ::before {
+    accent-color: orangered;
+
+    &:focus {
+        outline: 1px solid orangered;
+    }
+}
+
 .shadowedText {
     text-shadow: 0.08rem 0.07rem 0.07rem black;
 }
