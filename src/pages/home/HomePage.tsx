@@ -1,8 +1,20 @@
+import TranslateInput from "../../features/translate/ui/translate-input/TranslateInput";
+import styles from "./HomePage.module.css";
+
 export default function HomePage() {
 
     return (
-        <div>
-            0
-        </div>
+        <main className={styles.app}>
+
+            {/* Translate section */}
+            <div className={styles.appSection}>
+                <h2>Translate</h2>
+                <TranslateInput />
+            </div>
+             
+
+             {/* Dictionary section  */}
+            <div className={styles.appSection}></div>
+        </main>
     );
 }
