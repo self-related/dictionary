@@ -16,7 +16,7 @@ export default function LangPanel({ className = "" }: LangPanelProps) {
         <div className={`${styles.langPanel} ${className}`}>
 
             {/* Source lang  */}
-            <select name="" id="" defaultValue={"en"} className={styles.select}>
+            <select name="" id="" defaultValue={"auto"} className={styles.select}>
                 {
                     langIds.map((langId) => (
                         <option value={langId}>{langList[langId]}</option>
@@ -30,7 +30,7 @@ export default function LangPanel({ className = "" }: LangPanelProps) {
 
 
             {/* Target lang  */}
-            <select name="" id="" defaultValue={"auto"} className={styles.select}>
+            <select name="" id="" defaultValue={"en"} className={styles.select}>
                 {
                     langIds.map((langId) => (
                         <option value={langId}>{langList[langId]}</option>
