@@ -1,3 +1,47 @@
 .langPanel {
+    column-gap: 5px;
     display: flex;
+    height: 2rem;
+    width: 100%;
+}
+
+.select {
+    background-color: #606060;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+    flex-grow: 1;
+    font-size: 1rem;
+    padding-left: 7px;
+    text-shadow: 0.08rem 0.07rem 0.07rem black;
+    width: 0;
+
+    &:hover {
+        background-color: orange;
+    }
+
+    &:open {
+        background-color: #353535;
+    }
+}
+
+.switchBtn {
+    background: none;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 400;
+    text-shadow: 0.08rem 0.07rem 0.07rem black;
+    min-width: fit-content;
+
+    &:hover {
+        background-color: orange;
+    }
+
+    &:active {
+        background-color: orangered;
+    }
 }

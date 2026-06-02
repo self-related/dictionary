@@ -1,4 +1,4 @@
-import TranslateInput from "../../features/translate/ui/translate-input/TranslateInput";
+import LangPanel from "../../features/translate/ui/lang-panel/LangPanel";
 import styles from "./HomePage.module.css";
 
 export default function HomePage() {
@@ -9,7 +9,7 @@ export default function HomePage() {
             {/* Translate section */}
             <div className={styles.appSection}>
                 <h2>Translate</h2>
-                <TranslateInput />
+                <LangPanel />
             </div>
              
 
