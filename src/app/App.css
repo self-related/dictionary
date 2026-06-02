@@ -1,7 +1,7 @@
 *, ::after, ::before {
     accent-color: orangered;
 
-    &:focus {
+    &:focus-visible {
         outline: 1px solid orangered;
     }
 }
