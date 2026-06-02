@@ -19,7 +19,7 @@ export default function LangPanel({ className = "" }: LangPanelProps) {
             <select name="" id="" defaultValue={"auto"} className={styles.select}>
                 {
                     langIds.map((langId) => (
-                        <option value={langId}>{langList[langId]}</option>
+                        <option value={langId} key={langId}>{langList[langId]}</option>
                     ))
                 }
             </select>
@@ -33,7 +33,7 @@ export default function LangPanel({ className = "" }: LangPanelProps) {
             <select name="" id="" defaultValue={"en"} className={styles.select}>
                 {
                     langIds.map((langId) => (
-                        <option value={langId}>{langList[langId]}</option>
+                        <option value={langId} key={langId}>{langList[langId]}</option>
                     ))
                 }
             </select>
