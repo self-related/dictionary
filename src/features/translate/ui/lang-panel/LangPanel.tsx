@@ -15,7 +15,7 @@ export default function LangPanel({ className = "" }: LangPanelProps) {
     return (
         <div className={`${styles.langPanel} ${className}`}>
 
-            {/* Source lang  */}
+            {/* Source lang selector */}
             <select name="" id="" defaultValue={"auto"} className={styles.select}>
                 {
                     langIds.map((langId) => (
@@ -29,7 +29,7 @@ export default function LangPanel({ className = "" }: LangPanelProps) {
             <button className={styles.switchBtn}>&lt;-&gt;</button>
 
 
-            {/* Target lang  */}
+            {/* Target lang selector */}
             <select name="" id="" defaultValue={"en"} className={styles.select}>
                 {
                     langIds.map((langId) => (
