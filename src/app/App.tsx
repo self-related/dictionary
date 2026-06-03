@@ -5,7 +5,7 @@ import "./App.css";
 export default function App() {
 
     return (
-        <Layout>
+        <Layout className="shadowedText defaultTheme orangeAccent">
             <HomePage />
         </Layout>
     );

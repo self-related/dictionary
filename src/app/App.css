@@ -1,11 +1,37 @@
-*, ::after, ::before {
-    accent-color: orange;
+/* default theme variables */
+.defaultTheme {
+    --text-color: white;
+    --text-shadow-color: black;
+}
 
-    &:focus-visible {
-        outline: 1px solid orange;
-    }
+.darkTheme {
+    --text-shadow-color: black;
+}
+
+/* change variables for white color scheme */
+.lightTheme {
+    --text-shadow-color: white;
 }
 
 .shadowedText {
-    text-shadow: 0.08rem 0.07rem 0.07rem black;
+    text-shadow: 0.08rem 0.07rem 0.07rem var(--text-shadow-color);
 }
+
+
+/* orange accents */
+.orangeAccent *,
+.orangeAccent ::after, 
+.orangeAccent ::before 
+{
+    --accent-color: orange;
+    --active-color: red;
+    --hover-color: orange;
+
+
+    accent-color: var(--accent-color);
+
+    &:focus-visible {
+        outline: 1px solid var(--accent-color);
+    }
+}
+

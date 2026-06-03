@@ -39,10 +39,10 @@
         text-shadow: inherit;
 
         &:hover {
-            background-color: orange;
+            background-color: var(--hover-color);
         }
         &:active {
-            background-color: red;
+            background-color: var(--active-color);
         }
     }
 }
