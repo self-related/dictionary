@@ -1,3 +1,48 @@
-.translateInput {
+.inputWrap {
     display: block;
+}
+
+.translateInput {
+    background-color: #606060;
+    border: none;
+    border-radius: 3px;
+    display: block;
+    font-size: 1rem;
+    color: white;
+    height: 150px;
+    resize: none;
+    padding: 0.2rem 0.5rem;
+    text-shadow: inherit;
+    width: 100%;
+
+    &:hover {
+        background-color: #707070;
+    }
+}
+
+.buttonsWrap {
+    display: flex;
+    column-gap: 7px;
+    justify-content: end;
+    margin-top: 0.5rem;
+    height: 2rem;
+    width: 100%;
+
+    & > button {
+        background-color: #606060;
+        border: none;
+        border-radius: 3px;
+        color: white;
+        cursor: pointer;
+        display: inline;
+        padding: 0.2rem 0.5rem;
+        text-shadow: inherit;
+
+        &:hover {
+            background-color: orange;
+        }
+        &:active {
+            background-color: red;
+        }
+    }
 }

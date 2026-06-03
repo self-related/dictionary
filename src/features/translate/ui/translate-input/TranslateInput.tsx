@@ -7,8 +7,16 @@ interface TranslateInputProps {
 export default function TranslateInput({ className }: TranslateInputProps) {
 
     return (
-        <input
-            className={`${styles.input} ${className}`}
-        />
+        <div className={`${styles.inputWrap} shadowedText ${className}`}>
+            <textarea
+                className={styles.translateInput}
+            />
+
+            <div className={styles.buttonsWrap}>
+                <button>Clear</button>
+                <button>Translate</button>
+            </div>
+        
+        </div>
     );
 }
