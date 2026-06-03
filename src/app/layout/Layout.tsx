@@ -2,14 +2,16 @@ import styles from "./Layout.module.css";
 
 interface LayoutProps {
     children?: React.ReactNode | string,
+    className?: string
 }
 
 export default function Layout({
-    children
+    children,
+    className
 }: LayoutProps) {
 
     return (
-        <div className={styles.layout}>
+        <div className={`${styles.layout} ${className}`}>
             {/* Navbar */}
             <nav className={styles.navbar}>
                 <p>Dictionary</p>
