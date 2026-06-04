@@ -24,6 +24,8 @@
         --nav-color: transparent;
     }
     
+    
+    /* apply default values to inherit in components */
     color: var(--text-color);
     text-shadow: 0.08rem 0.07rem 0.07rem var(--text-shadow-color);
 }
@@ -69,7 +71,7 @@
 }
 
 
-/* apply current color scheme  */
+/* apply current accents  */
 * {
     accent-color: var(--accent-color);
 
@@ -82,6 +84,7 @@
         accent-color: var(--checkbox-color);
     }
 }
+
 
 /* fix inconsistent scrollbar color */
 body {
