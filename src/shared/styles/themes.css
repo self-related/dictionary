@@ -9,9 +9,7 @@
 
     --button-background: #606060;
     --border-color: #808080;
-
     --nav-color: black;
-
 
     @media (prefers-color-scheme: light) {
         --text-color: rgb(27, 27, 27);
@@ -23,7 +21,6 @@
 
         --button-background: #e4ebf4;
         --border-color: #4f4f4f;
-
         --nav-color: transparent;
     }
     
@@ -43,20 +40,23 @@
 
     --button-background: #606060;
     --border-color: #808080;
+    --nav-color: black;
 }
 
 
 /* light theme */
 .lightTheme {
-    --text-color: black;
+    --text-color: rgb(27, 27, 27);
     --text-shadow-color: none;
 
     --background-color-1: white;
     --background-color-2: #e4ebf4;
-    --background-color-2-hover: #c5d7ee;
+    --background-color-2-hover: #d9e3ef;
 
     --button-background: #e4ebf4;
     --border-color: #4f4f4f;
+
+    --nav-color: transparent;
 }
 
 
