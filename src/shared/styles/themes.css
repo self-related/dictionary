@@ -82,3 +82,12 @@
         accent-color: var(--checkbox-color);
     }
 }
+
+/* fix inconsistent scrollbar color */
+body {
+    background-color: black;
+
+    @media (prefers-color-scheme: light) {
+        background-color: white;
+    }
+}
