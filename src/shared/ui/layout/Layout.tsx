@@ -1,4 +1,5 @@
 import styles from "./Layout.module.css";
+import "../../styles/themes.css";
 
 interface LayoutProps {
     children?: React.ReactNode | string,
@@ -6,12 +7,11 @@ interface LayoutProps {
 }
 
 export default function Layout({
-    children,
-    className
+    children
 }: LayoutProps) {
 
     return (
-        <div className={`${styles.layout} ${className}`}>
+        <div className={`${styles.layout} defaultTheme orangeAccent`}>
             {/* Navbar */}
             <nav className={styles.navbar}>
                 <p>Dictionary</p>

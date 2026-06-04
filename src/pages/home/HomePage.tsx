@@ -1,5 +1,6 @@
 import LangPanel from "../../features/translate/ui/lang-panel/LangPanel";
 import TranslateInput from "../../features/translate/ui/translate-input/TranslateInput";
+import TranslateOutput from "../../features/translate/ui/translate-output/TranslateOutput";
 import styles from "./HomePage.module.css";
 
 export default function HomePage() {
@@ -12,6 +13,7 @@ export default function HomePage() {
                 <h2>Translate</h2>
                 <LangPanel />
                 <TranslateInput />
+                <TranslateOutput />
             </div>
              
 

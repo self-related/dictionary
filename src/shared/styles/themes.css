@@ -1,0 +1,84 @@
+/* default theme */
+.defaultTheme {
+    --text-color: white;
+    --text-shadow-color: black;
+
+    --background-color-1: #252525;
+    --background-color-2: #606060;
+    --background-color-2-hover: #707070;
+
+    --button-background: #606060;
+    --border-color: #808080;
+
+    --nav-color: black;
+
+
+    @media (prefers-color-scheme: light) {
+        --text-color: rgb(27, 27, 27);
+        --text-shadow-color: none;
+
+        --background-color-1: white;
+        --background-color-2: #e4ebf4;
+        --background-color-2-hover: #d9e3ef;
+
+        --button-background: #e4ebf4;
+        --border-color: #4f4f4f;
+
+        --nav-color: transparent;
+    }
+    
+    color: var(--text-color);
+    text-shadow: 0.08rem 0.07rem 0.07rem var(--text-shadow-color);
+}
+
+
+/* dark theme */
+.darkTheme {
+    --text-color: white;
+    --text-shadow-color: black;
+
+    --background-color-1: #252525;
+    --background-color-2: #606060;
+    --background-color-2-hover: #707070;
+
+    --button-background: #606060;
+    --border-color: #808080;
+}
+
+
+/* light theme */
+.lightTheme {
+    --text-color: black;
+    --text-shadow-color: none;
+
+    --background-color-1: white;
+    --background-color-2: #e4ebf4;
+    --background-color-2-hover: #c5d7ee;
+
+    --button-background: #e4ebf4;
+    --border-color: #4f4f4f;
+}
+
+
+/* orange accents */
+.orangeAccent {
+    --accent-color: orange;
+    --active-color: red;
+    --hover-color: orange;
+    --checkbox-color: #ff5500;
+}
+
+
+/* apply current color scheme  */
+* {
+    accent-color: var(--accent-color);
+
+
+    &:focus-visible {
+        outline: 1px solid var(--accent-color);
+    }
+
+    & input[type=checkbox] {
+        accent-color: var(--checkbox-color);
+    }
+}

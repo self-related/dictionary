@@ -1,4 +1,5 @@
 .layout {
+    background-color: var(--background-color-1);
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -7,13 +8,15 @@
 
 .footer {
     align-items: center;
-    background-color: black;
+    background-color: var(--nav-color);
     display: flex;
     justify-content: center;
     min-height: 2rem;
+    padding: 0.5rem;
     width: 100%;
 
     & > p {
+        font-size: 1rem;
         margin: 0;
     }
 }
@@ -26,10 +29,12 @@
 
 .navbar {
     align-items: center;
-    background-color: black;
+    background-color: var(--nav-color);
     display: flex;
+    color: inherit;
     justify-content: center;
     min-height: 3rem;
+    padding: 0.5rem;
     width: 100%;
     
     & > p {

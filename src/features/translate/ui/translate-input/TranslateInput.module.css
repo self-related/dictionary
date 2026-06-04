@@ -3,12 +3,12 @@
 }
 
 .translateInput {
-    background-color: #606060;
+    background-color: var(--background-color-2);
     border: none;
     border-radius: 3px;
     display: block;
     font-size: 1rem;
-    color: white;
+    color: inherit;
     height: 150px;
     resize: none;
     padding: 0.2rem 0.5rem;
@@ -16,7 +16,7 @@
     width: 100%;
 
     &:hover {
-        background-color: #707070;
+        background-color: var(--background-color-2-hover);
     }
 }
 
@@ -29,11 +29,13 @@
     width: 100%;
 
     & > button {
-        background-color: #606060;
+        background-color: var(--button-background);
         border: none;
         border-radius: 3px;
-        color: white;
+        color: inherit;
         cursor: pointer;
+
+        font-weight: normal;        
         display: inline;
         padding: 0.2rem 0.5rem;
         text-shadow: inherit;

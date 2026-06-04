@@ -1,11 +1,11 @@
 import HomePage from "../pages/home/HomePage";
-import Layout from "./layout/Layout";
-import "./App.css";
+import Layout from "../shared/ui/layout/Layout";
+import "./ui/styles/global.css";
 
 export default function App() {
 
     return (
-        <Layout className="shadowedText defaultTheme orangeAccent">
+        <Layout>
             <HomePage />
         </Layout>
     );
