@@ -7,8 +7,12 @@ interface TranslateOutputProps {
 export default function TranslateOutput({ className }: TranslateOutputProps) {
 
     return (
-        <div className={`${styles.translateOutput} ${className}`}>
-            
+        <div className={`${styles.translateOutput} shadowedText ${className}`}>
+            <textarea value={0} />
+
+            <div className={styles.buttonsWrap}>
+                <button>Add -&gt;</button>
+            </div>
         </div>
     );
 }

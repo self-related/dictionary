@@ -1,3 +1,46 @@
 .translateOutput {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+
+    & > textarea {
+        background-color: #606060;
+        border: none;
+        border-radius: 3px;
+        color: var(--text-color);
+
+        height: 10rem;
+
+        font-size: 1rem;
+        padding: 0.2rem 0.5rem; 
+        resize: none;
+        text-shadow: inherit;
+
+        &:hover {
+            background-color: #707070;
+        }
+    }
+}
+
+.buttonsWrap {
+    display: flex;
+    justify-content: end;
+
+       & > button {
+        background-color: #606060;
+        border: none;
+        border-radius: 3px;
+        color: white;
+        cursor: pointer;
+        min-height: 2rem;
+        padding: 0.2rem 0.5rem;
+        text-shadow: inherit;
+
+        &:hover {
+            background-color: var(--hover-color);
+        }
+        &:active {
+            background-color: var(--active-color);
+        }
+    } 
 }
