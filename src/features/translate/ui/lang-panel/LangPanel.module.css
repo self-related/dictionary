@@ -23,7 +23,7 @@
     }
 
     &:open {
-        background-color: #353535;
+        background-color: var(--background-color-1);
     }
 }
 
