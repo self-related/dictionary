@@ -6,7 +6,7 @@ import styles from "./HomePage.module.css";
 export default function HomePage() {
 
     return (
-        <main className={styles.app}>
+        <div className={styles.app}>
 
             {/* Translate section */}
             <div className={styles.appSection}>
@@ -19,6 +19,6 @@ export default function HomePage() {
 
              {/* Dictionary section  */}
             <div className={styles.appSection}></div>
-        </main>
+        </div>
     );
 }
