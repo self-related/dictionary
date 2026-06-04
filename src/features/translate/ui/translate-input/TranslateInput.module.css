@@ -46,3 +46,9 @@
         }
     }
 }
+
+.autoTranslateLabel {
+    align-self: center;
+    justify-self: start;
+    padding-right: 5px;
+}
