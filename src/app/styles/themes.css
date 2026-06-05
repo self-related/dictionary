@@ -64,9 +64,9 @@
 
 /* orange accents */
 .orangeAccent {
-    --accent-color: orange;
+    --accent-color: #fb6921;
     --active-color: red;
-    --hover-color: orange;
+    --hover-color: #fd853a;
     --checkbox-color: #ff5500;
 }
 

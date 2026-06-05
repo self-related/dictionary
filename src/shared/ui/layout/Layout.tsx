@@ -1,5 +1,4 @@
 import styles from "./Layout.module.css";
-import "./styles/themes.css";
 
 interface LayoutProps {
     children?: React.ReactNode | string,
