@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styles from "./Layout.module.css";
 
 interface LayoutProps {
@@ -6,11 +7,14 @@ interface LayoutProps {
 }
 
 export default function Layout({
-    children
+    children,
+    className
 }: LayoutProps) {
 
+    const [accent] = useState("orangeAccent"); // get from settings store
+
     return (
-        <div className={`${styles.layout} defaultTheme orangeAccent`}>
+        <div className={`${styles.layout} ${accent} ${className}`}>
             {/* Navbar */}
             <nav className={styles.navbar}>
                 <p>Dictionary</p>

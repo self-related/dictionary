@@ -1,5 +1,5 @@
 /* default theme */
-.defaultTheme {
+body {
     --text-color: white;
     --text-shadow-color: #000000bd;
     --text-shadow-dark: #000000bd;
@@ -13,6 +13,7 @@
     --button-background: #606060;
     --border-color: #808080;
     --nav-color: black;
+
 
     @media (prefers-color-scheme: light) {
         --text-color: rgb(27, 27, 27);
@@ -30,13 +31,14 @@
     }
     
     
-    /* apply default values to inherit in components */
+    /* apply defaults */
+    background-color: var(--background-color-1);
     color: var(--text-color);
     text-shadow: 0.07rem 0.05rem 0.1rem var(--text-shadow-color);
 }
 
 
-/* dark theme */
+/* manual dark theme */
 .darkTheme {
     --text-color: white;
     --text-shadow-color: #000000bd;
@@ -54,7 +56,7 @@
 }
 
 
-/* light theme */
+/* manual light theme */
 .lightTheme {
     --text-color: rgb(27, 27, 27);
     --text-shadow-color: none;
@@ -80,7 +82,7 @@
 }
 
 
-/* apply current accents  */
+/* apply defaults for current accents  */
 * {
     accent-color: var(--accent-color);
 
@@ -91,15 +93,5 @@
 
     & input[type=checkbox] {
         accent-color: var(--checkbox-color);
-    }
-}
-
-
-/* fix inconsistent scrollbar color */
-body {
-    background-color: black;
-
-    @media (prefers-color-scheme: light) {
-        background-color: white;
     }
 }
