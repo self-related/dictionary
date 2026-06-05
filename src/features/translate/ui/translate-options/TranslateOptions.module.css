@@ -1,0 +1,15 @@
+.translateOptions {
+    background-color: var(--background-color-2);
+    display: flex;
+    column-gap: 7px;
+
+    border-radius: 3px;
+    flex-wrap: wrap;
+
+    justify-content: start;
+    align-items: start;
+    min-height: 4rem;
+
+    padding: 7px 0.5rem;
+    row-gap: max(0.5rem, 5px);
+}

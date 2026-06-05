@@ -1,0 +1,20 @@
+.option {
+    background-color: var(--accent-color);
+    border: none;
+    border-radius: 5px;
+    
+    color: white;
+    cursor: pointer;
+
+    font-weight: normal;
+
+    display: block;
+    text-shadow: 0.07rem 0.07rem 0.08rem black;
+
+    &:hover {
+        background-color: var(--hover-color);
+    }
+    &:active {
+        background-color: var(--active-color);
+    }
+}
