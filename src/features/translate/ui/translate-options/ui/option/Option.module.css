@@ -1,15 +1,19 @@
 .option {
-    background-color: var(--accent-color);
+    background-color: var(--background-color-3);
     border: none;
     border-radius: 5px;
     
     color: white;
     cursor: pointer;
 
-    font-weight: normal;
+    font-weight: 500;
 
     display: block;
-    text-shadow: 0.07rem 0.07rem 0.08rem black;
+    
+    margin: 0;
+    padding: 5px;
+
+    text-shadow: 0.07rem 0.05rem 0.1rem var(--text-shadow-dark);
 
     &:hover {
         background-color: var(--hover-color);
