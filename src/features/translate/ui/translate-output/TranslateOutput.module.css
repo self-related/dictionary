@@ -25,6 +25,7 @@
 .buttonsWrap {
     display: flex;
     justify-content: end;
+    column-gap: 0.5rem;
 
        & > button {
         background-color: var(--button-background);
