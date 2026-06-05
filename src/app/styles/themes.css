@@ -39,11 +39,14 @@
 /* dark theme */
 .darkTheme {
     --text-color: white;
-    --text-shadow-color: black;
+    --text-shadow-color: #000000bd;
+    --text-shadow-dark: #000000bd;
 
     --background-color-1: #252525;
     --background-color-2: #606060;
     --background-color-2-hover: #707070;
+    --background-color-3: #383839;
+
 
     --button-background: #606060;
     --border-color: #808080;
@@ -59,10 +62,11 @@
     --background-color-1: white;
     --background-color-2: #e4ebf4;
     --background-color-2-hover: #d9e3ef;
+    --background-color-3: #7f9abc;
+
 
     --button-background: #e4ebf4;
-    --border-color: #4f4f4f;
-
+    --border-color: #c1cad6;
     --nav-color: transparent;
 }
 
