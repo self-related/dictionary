@@ -26,23 +26,5 @@
     display: flex;
     justify-content: end;
     column-gap: 0.5rem;
-
-       & > button {
-        background-color: var(--button-background);
-        border: none;
-        border-radius: 3px;
-        cursor: pointer;
-        color: inherit;
-        font-weight: normal;
-        min-height: 2rem;
-        padding: 0.2rem 0.5rem;
-        text-shadow: inherit;
-
-        &:hover {
-            background-color: var(--hover-color);
-        }
-        &:active {
-            background-color: var(--active-color);
-        }
-    } 
+    height: 2rem;
 }

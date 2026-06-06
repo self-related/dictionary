@@ -1,6 +1,7 @@
 import styles from "./LangPanel.module.css";
 import { langLists } from "../../api/providers";
 import { useState } from "react";
+import Button from "../../../../shared/ui/button/Button";
 
 interface LangPanelProps {
     className?: string
@@ -33,7 +34,7 @@ export default function LangPanel({ className = "" }: LangPanelProps) {
 
 
             {/* Switch button  */}
-            <button className={styles.switchBtn}>&lt;-&gt;</button>
+            <Button transparent>&lt;-&gt;</Button>
 
 
             {/* Target lang selector */}

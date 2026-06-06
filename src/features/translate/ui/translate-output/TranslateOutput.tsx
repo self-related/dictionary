@@ -1,3 +1,4 @@
+import Button from "../../../../shared/ui/button/Button";
 import styles from "./TranslateOutput.module.css";
 
 interface TranslateOutputProps {
@@ -11,8 +12,8 @@ export default function TranslateOutput({ className }: TranslateOutputProps) {
             <textarea value={0} />
 
             <div className={styles.buttonsWrap}>
-                <button>Reset</button>      {/* reset to default translation (if option was chosen) */}
-                <button>Add -&gt;</button>  {/* add to dictionary */}
+                <Button>Reset</Button>      {/* reset to default translation (if option was chosen) */}
+                <Button>Add -&gt;</Button>  {/* add to dictionary */}
             </div>
         </div>
     );

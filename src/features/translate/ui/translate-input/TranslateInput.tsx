@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./TranslateInput.module.css";
+import Button from "../../../../shared/ui/button/Button";
 
 interface TranslateInputProps {
     className?: string
@@ -27,8 +28,8 @@ export default function TranslateInput({ className }: TranslateInputProps) {
                     />
                 </label>
 
-                <button>Clear</button>
-                <button>Translate</button>
+                <Button>Clear</Button>
+                <Button>Translate</Button>
             </div>
         
         </div>

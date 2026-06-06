@@ -27,26 +27,6 @@
     margin-top: 0.5rem;
     height: 2rem;
     width: 100%;
-
-    & > button {
-        background-color: var(--button-background);
-        border: none;
-        border-radius: 3px;
-        color: inherit;
-        cursor: pointer;
-
-        font-weight: normal;        
-        display: inline;
-        padding: 0.2rem 0.5rem;
-        text-shadow: inherit;
-
-        &:hover {
-            background-color: var(--hover-color);
-        }
-        &:active {
-            background-color: var(--active-color);
-        }
-    }
 }
 
 .autoTranslateLabel {

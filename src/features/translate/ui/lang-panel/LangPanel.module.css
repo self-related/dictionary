@@ -26,23 +26,3 @@
         background-color: var(--background-color-1);
     }
 }
-
-.switchBtn {
-    background: none;
-    border: none;
-    border-radius: 3px;
-    color: inherit;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 400;
-    min-width: fit-content;
-    text-shadow: inherit;
-
-    &:hover {
-        background-color: var(--hover-color);
-    }
-
-    &:active {
-        background-color: var(--active-color);
-    }
-}
