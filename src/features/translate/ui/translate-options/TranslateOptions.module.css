@@ -8,8 +8,13 @@
 
     justify-content: start;
     align-items: start;
-    min-height: 4rem;
+    max-height: 8rem;
 
     padding: 7px 0.5rem;
     row-gap: max(0.5rem, 5px);
+
+    
+    &:not(:has(*)) {
+        display: none;
+    }
 }
