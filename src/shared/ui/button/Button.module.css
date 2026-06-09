@@ -10,6 +10,8 @@
     padding: 0.2rem 0.5rem;
     text-shadow: inherit;
 
+    min-width: fit-content;
+
     &:hover {
         background-color: var(--hover-color);
     }
