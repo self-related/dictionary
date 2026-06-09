@@ -1,0 +1,11 @@
+.dictionaryPanel {
+    display: flex;
+    
+    height: 2rem;
+    width: 100%;
+}
+
+.dictionarySwitch {
+    min-width: 30%;
+    width: fit-content;
+}
