@@ -1,5 +1,9 @@
 :root {
     font-size: 16px;
+
+    @media screen and (width > 1800px) {
+        font-size: 22px;
+    }
 }
 
 *, ::after, ::before {
