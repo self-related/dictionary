@@ -1,0 +1,20 @@
+.select {
+    background-color: var(--background-color-2);
+    border: none;
+    border-radius: 3px;
+    color: inherit;
+    
+    cursor: pointer;
+    flex-grow: 1;
+    font-size: 1rem;
+    padding-left: 0.5rem;
+    text-shadow: inherit;
+
+    &:hover {
+        background-color: var(--hover-color);
+    }
+
+    &:open {
+        background-color: var(--background-color-1);
+    }
+}

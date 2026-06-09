@@ -2,6 +2,7 @@ import styles from "./LangPanel.module.css";
 import { langLists } from "../../api/providers";
 import { useState } from "react";
 import Button from "../../../../shared/ui/button/Button";
+import Select from "../../../../shared/ui/select/Select";
 
 interface LangPanelProps {
     className?: string
@@ -24,13 +25,13 @@ export default function LangPanel({ className = "" }: LangPanelProps) {
         <div className={`${styles.langPanel} ${className}`}>
 
             {/* Source lang selector */}
-            <select name="" id="" defaultValue={sourceLangId} className={styles.select}>
+            <Select id="" defaultValue={sourceLangId}>
                 {
                     langIds.map((langId) => (
                         <option value={langId} key={langId}>{langList[langId]}</option>
                     ))
                 }
-            </select>
+            </Select>
 
 
             {/* Switch button  */}
@@ -38,13 +39,13 @@ export default function LangPanel({ className = "" }: LangPanelProps) {
 
 
             {/* Target lang selector */}
-            <select name="" id="" defaultValue={targetLangId} className={styles.select}>
+            <Select id="" defaultValue={targetLangId}>
                 {
                     targetLangIds.map((langId) => (
                         <option value={langId} key={langId}>{langList[langId]}</option>
                     ))
                 }
-            </select>
+            </Select>
 
         </div>
     );
