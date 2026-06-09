@@ -5,9 +5,8 @@
     color: inherit;
     
     cursor: pointer;
-    flex-grow: 1;
     font-size: 1rem;
-    padding-left: 0.5rem;
+    padding: 0 0.5rem;
     text-shadow: inherit;
 
     &:hover {
@@ -17,4 +16,8 @@
     &:open {
         background-color: var(--background-color-1);
     }
+}
+
+.grow {
+    flex-grow: 1;
 }
