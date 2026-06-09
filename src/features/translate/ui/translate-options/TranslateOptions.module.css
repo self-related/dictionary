@@ -8,12 +8,14 @@
 
     justify-content: start;
     align-items: start;
-    max-height: 8rem;
+    align-content: start;
+    height: 7.2rem;
 
     padding: 7px 0.5rem;
     row-gap: max(0.5rem, 5px);
 
-    
+    overflow-y: auto;
+
     &:empty {
         display: none;
     }
