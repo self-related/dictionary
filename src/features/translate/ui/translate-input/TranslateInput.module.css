@@ -33,6 +33,7 @@
     align-self: center;
     justify-self: start;
     padding-right: 5px;
+    min-width: max-content;
 
     & > input[type=checkbox] {
         height: 0.9rem;

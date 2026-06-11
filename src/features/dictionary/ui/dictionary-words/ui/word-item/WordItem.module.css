@@ -1,0 +1,81 @@
+.wordItem {
+    display: flex;
+    background-color: var(--background-color-3);
+    border-radius: 2px;
+    column-gap: 0.5rem;
+
+    justify-content: space-between;
+
+    padding: 0.5rem 0.7rem;
+}
+
+
+.textWrap {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+
+    justify-content: center;
+
+    & > p {
+        margin: 0;
+
+        word-wrap: normal;
+    }
+}
+
+.learned {
+    color: #03bb03;
+}
+
+.notLearned {
+    color: #fc4566;
+    text-shadow: inherit;
+}
+
+
+/* buttons */
+.buttonsWrap {
+    display: flex;
+    flex-direction: column;
+
+    & button {
+        align-content: center;
+        background: none;
+        border: none;
+        border-radius: 2px;
+
+        cursor: pointer;
+        font-size: 0.9rem;
+
+        padding: 0.3rem;
+
+        text-shadow: inherit;
+
+
+        &:hover {
+            background-color: var(--hover-color);
+        }
+        &:active {
+            background-color: var(--active-color);
+        }
+    }
+}
+
+.closeBtn {
+    color: #fc4566;
+    font-weight: normal;
+
+}
+
+.learnedBtn {
+    color: #03bb03;
+
+}
+
+.optionsBtn {
+    color: inherit;
+    font-weight: 600;
+    writing-mode: vertical-lr;
+    padding: 0.3rem 0 0.3rem 0.3rem !important;
+}
