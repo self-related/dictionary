@@ -7,7 +7,7 @@ export default function DictionaryWords() {
 
     return (
         <div className={styles.dictionaryWords}>
-            {!words || <p className={styles.placeholder}>No words yet</p>}
+            {!words.length && <p className={styles.placeholder}>No words yet</p>}
         </div>
     );
 }
