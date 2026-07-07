@@ -30,7 +30,7 @@ export default function DictionaryWords() {
             {
                 (words.length === 0)
                 ? <p className={styles.placeholder}>No words yet</p>
-                : words.map(wordProps => <WordItem {...wordProps} />)
+                : words.map((wordProps, i) => <WordItem key={i} {...wordProps} />)
             }
         </div>
     );
