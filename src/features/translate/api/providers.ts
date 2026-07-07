@@ -1,12 +1,18 @@
 import { getGoogleUrl, googleLangList } from "./providers/google";
-import type { LangList, Providers } from "./types";
+import type { LangList, TranslateQueryData } from "./types";
 
 
-export const providers: Providers = {
-    google: getGoogleUrl
-};
+const providerUrlGetters = {
+    google: getGoogleUrl,
+}
 
 
-export const langLists: {[key: string]: LangList} = {
+export const langLists: { [provider: string]: LangList } = {
     google: googleLangList
+}
+
+
+export function getUrl({ provider, ...rest }: TranslateQueryData) {
+    const url = providerUrlGetters[provider](rest);
+    return url;
 }

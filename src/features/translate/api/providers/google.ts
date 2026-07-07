@@ -1,8 +1,11 @@
-import type { LangList, LinkGetter } from "../types";
+import type { LangList, TranslateQueryData } from "../types";
 
 
-export const getGoogleUrl: LinkGetter = ({sourceText, sourceLang, targetLang}) => {
-    return `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceLang}&tl=${targetLang}&dt=t&dt=bd&dj=1&q=${sourceText}`;
+const BASE_URL = "https://translate.googleapis.com";
+
+
+export function getGoogleUrl({ sourceText, sourceLang, targetLang }: TranslateQueryData): string {
+    return `${BASE_URL}/translate_a/single?client=gtx&sl=${sourceLang}&tl=${targetLang}&dt=t&dt=bd&dj=1&q=${sourceText}`;
 };
 
 

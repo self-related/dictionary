@@ -18,8 +18,8 @@ export default function TranslateInput({ className }: TranslateInputProps) {
 
     useEffect(() => {
         if (input === "") return;
-        // Temp constatns with actual input
-        fetchTransltaion({ api: "google", sourceLang: "en", targetLang: "es", sourceText: input.trim()})
+        // Temp constants with actual input
+        fetchTransltaion({ provider: "google", sourceLang: "en", targetLang: "es", sourceText: input.trim()})
     }, [input, fetchTransltaion]);
 
 
