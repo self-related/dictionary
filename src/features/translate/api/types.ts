@@ -17,3 +17,12 @@ export interface Providers {
 export interface LangList {
     [key: string]: string
 }
+
+
+export interface TranslateQuery {
+    api: string,
+    sourceLang: string,
+    sourceText: string,
+    targetLang: string,
+    extra?: unknown // add if needed for some endpoints
+}
