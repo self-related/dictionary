@@ -4,12 +4,12 @@ import type { LangList, TranslateQueryData } from "../types";
 const BASE_URL = "https://translate.googleapis.com";
 
 
-export function getGoogleUrl({ sourceText, sourceLang, targetLang }: TranslateQueryData): string {
+export function getUrlGoogle({ sourceText, sourceLang, targetLang }: TranslateQueryData): string {
     return `${BASE_URL}/translate_a/single?client=gtx&sl=${sourceLang}&tl=${targetLang}&dt=t&dt=bd&dj=1&q=${sourceText}`;
 };
 
 
-export const googleLangList: LangList = {
+export const langListGoogle: LangList = {
     auto: "Auto",
     en: "English",
     "zh-CN": "Chinese (Simplified)",

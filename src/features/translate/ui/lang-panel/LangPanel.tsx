@@ -1,5 +1,5 @@
 import styles from "./LangPanel.module.css";
-import { langLists } from "../../api/providers";
+import { langListByProvider } from "../../api/providers";
 import { useState } from "react";
 import Button from "../../../../shared/ui/button/Button";
 import Select from "../../../../shared/ui/select/Select";
@@ -11,7 +11,7 @@ interface LangPanelProps {
 const provider = "google"; // temp constant before store defined
 
 export default function LangPanel({ className = "" }: LangPanelProps) {
-    const langList = langLists[provider];
+    const langList = langListByProvider[provider];
 
     const langIds = Object.keys(langList);
     const targetLangIds = Object.keys(langList).filter(id => id !== "auto"); // skip auto

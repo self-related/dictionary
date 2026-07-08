@@ -1,14 +1,19 @@
-import { getGoogleUrl, googleLangList } from "./google";
+import { getUrlGoogle, langListGoogle } from "./google";
 import type { LangList, TranslateQueryData } from "../types";
 
 
-const providerUrlGetters = {
-    google: getGoogleUrl,
+interface LangListByProvider {
+    [provider: string]: LangList
 }
 
 
-export const langLists: { [provider: string]: LangList } = {
-    google: googleLangList
+const providerUrlGetters = {
+    google: getUrlGoogle,
+}
+
+
+export const langListByProvider: LangListByProvider = {
+    google: langListGoogle
 }
 
 
