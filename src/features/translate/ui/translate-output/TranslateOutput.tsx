@@ -1,4 +1,6 @@
+import { useAppDispatch, useAppSelector } from "../../../../app/model/store/hooks";
 import Button from "../../../../shared/ui/button/Button";
+import { selectMainTranslation, setMainTranslation } from "../../model/translateSlice";
 import styles from "./TranslateOutput.module.css";
 
 interface TranslateOutputProps {
@@ -6,10 +8,15 @@ interface TranslateOutputProps {
 }
 
 export default function TranslateOutput({ className }: TranslateOutputProps) {
+    const dispatch = useAppDispatch();
+   const mainTranslation = useAppSelector(selectMainTranslation); 
 
     return (
         <div className={`${styles.translateOutput} shadowedText ${className}`}>
-            <textarea value={0} />
+            <textarea 
+                value={mainTranslation} 
+                onInput={(ev) => dispatch(setMainTranslation(ev.currentTarget.value))} 
+            />
 
             <div className={styles.buttonsWrap}>
                 <Button>Reset</Button>      {/* reset to default translation (if option was chosen) */}

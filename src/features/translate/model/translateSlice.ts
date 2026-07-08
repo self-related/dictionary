@@ -36,9 +36,14 @@ export const translateSlice = createSlice({
         setSourceText: (sliceState, action: PayloadAction<string>) => { 
             sliceState.translateQueryData.sourceText = action.payload;
         },
+        setMainTranslation: (sliceState, action: PayloadAction<string>) => {
+            sliceState.mainTranslation = action.payload;
+        }
     },
 });
 
 
-export const { setProvider, setSourceLang, setTargetLang, setSourceText } = translateSlice.actions;
+export const { setProvider, setSourceLang, setTargetLang, setSourceText, setMainTranslation } = translateSlice.actions;
+
 export const selectTranslateQueryData = (sliceState: RootState) => sliceState.translateSlice.translateQueryData;
+export const selectMainTranslation = (sliceState: RootState) => sliceState.translateSlice.mainTranslation;
