@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { translateApiSlice } from "../../../features/translate/api/translateApiSlice";
+import { translateSlice } from "../../../features/translate/model/translateSlice";
 
 export const store = configureStore({
     reducer: {
-        [translateApiSlice.reducerPath]: translateApiSlice.reducer
+        [translateApiSlice.reducerPath]: translateApiSlice.reducer,
+        [translateSlice.reducerPath]: translateSlice.reducer
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(translateApiSlice.middleware)
 });

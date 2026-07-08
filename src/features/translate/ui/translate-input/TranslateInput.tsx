@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import styles from "./TranslateInput.module.css";
 import Button from "../../../../shared/ui/button/Button";
 import { useLazyGetTranslationQuery } from "../../api/translateApiSlice";
+import { useAppDispatch, useAppSelector } from "../../../../app/model/store/hooks";
+import { selectTranslateQueryData, setSourceText } from "../../model/translateSlice";
 
 
 interface TranslateInputProps {
@@ -10,17 +12,19 @@ interface TranslateInputProps {
 
 
 export default function TranslateInput({ className }: TranslateInputProps) {
+    const dispatch = useAppDispatch();
+    const { sourceText } = useAppSelector(selectTranslateQueryData);
+    
     const [autoTranslate, setAutoTranslate] = useState<boolean>(true);
-    const [input, setInput] = useState(""); // Temp local state -> change to redux
 
     const [fetchTransltaion, { data: debugData }] = useLazyGetTranslationQuery();
     console.debug(`query: ${JSON.stringify(debugData)?.slice(0, 120)}...`);
 
     useEffect(() => {
-        if (input === "") return;
+        if (sourceText === "") return;
         // Temp constants with actual input
-        fetchTransltaion({ provider: "google", sourceLang: "en", targetLang: "es", sourceText: input.trim()})
-    }, [input, fetchTransltaion]);
+        fetchTransltaion({ provider: "google", sourceLang: "en", targetLang: "es", sourceText: sourceText.trim()})
+    }, [sourceText, fetchTransltaion]);
 
 
     return (
@@ -28,8 +32,8 @@ export default function TranslateInput({ className }: TranslateInputProps) {
             {/* input */}
             <textarea
                 className={styles.translateInput}
-                value={input}
-                onInput={(ev) => setInput(ev.currentTarget.value)}
+                value={sourceText}
+                onInput={(ev) => dispatch(setSourceText(ev.currentTarget.value))}
             />
 
             {/* checkbox and buttons  */}

@@ -10,3 +10,8 @@ export interface TranslateQueryData {
     targetLang: string,
     extra?: unknown // add if needed for some endpoints
 }
+
+export interface TranslateResult {
+    translation: string,
+    moreTranslations: string[]
+}
