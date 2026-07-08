@@ -44,7 +44,7 @@ export default function TranslateInput({ className }: TranslateInputProps) {
                         id="autoTranslate" 
                         checked={autoTranslate}
                         type="checkbox"
-                        onClick={() => setAutoTranslate(value => !value)}
+                        onChange={() => setAutoTranslate(value => !value)}
                     />
                 </label>
 
