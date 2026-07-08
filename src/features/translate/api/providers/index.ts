@@ -1,5 +1,5 @@
-import { getGoogleUrl, googleLangList } from "./providers/google";
-import type { LangList, TranslateQueryData } from "./types";
+import { getGoogleUrl, googleLangList } from "./google";
+import type { LangList, TranslateQueryData } from "../types";
 
 
 const providerUrlGetters = {
