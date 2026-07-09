@@ -17,7 +17,7 @@ const responseDataTransformers: { [provider: string]: (responseData: unknown) =>
     google: transformResponseDataGoogle
 }
 
-export const langListByProvider: LangListByProvider = {
+export const langListsByProvider: LangListByProvider = {
     google: langListGoogle
 }
 

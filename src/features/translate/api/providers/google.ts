@@ -1,5 +1,8 @@
 import type { LangList, TranslateQueryData, TranslateResult, TranslationVerbose } from "../types";
 
+const BASE_URL = "https://translate.googleapis.com";
+
+
 interface TranslateResponseGoogle {
     sentences: [{
         orig: string,
@@ -15,8 +18,6 @@ interface TranslateResponseGoogle {
     src: string,
     spell: object
 }
-
-const BASE_URL = "https://translate.googleapis.com";
 
 
 export function getUrlGoogle({ sourceText, sourceLang, targetLang }: TranslateQueryData): string {
