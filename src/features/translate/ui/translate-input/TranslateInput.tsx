@@ -13,7 +13,7 @@ interface TranslateInputProps {
 
 export default function TranslateInput({ className }: TranslateInputProps) {
     const dispatch = useAppDispatch();
-    const { sourceText } = useAppSelector(selectTranslateQueryData);
+    const translateQueryData = useAppSelector(selectTranslateQueryData);
     
     const [autoTranslate, setAutoTranslate] = useState<boolean>(true);
 
@@ -21,10 +21,10 @@ export default function TranslateInput({ className }: TranslateInputProps) {
     console.debug(`query: ${JSON.stringify(debugData)?.slice(0, 120)}...`);
 
     useEffect(() => {
-        if (sourceText === "") return;
+        if (translateQueryData.sourceText === "") return;
         // Temp constants with actual input
-        fetchTransltaion({ provider: "google", sourceLang: "en", targetLang: "es", sourceText: sourceText.trim()})
-    }, [sourceText, fetchTransltaion]);
+        fetchTransltaion(translateQueryData)
+    }, [translateQueryData, fetchTransltaion]);
 
 
     return (
@@ -32,7 +32,7 @@ export default function TranslateInput({ className }: TranslateInputProps) {
             {/* input */}
             <textarea
                 className={styles.translateInput}
-                value={sourceText}
+                value={translateQueryData.sourceText}
                 onInput={(ev) => dispatch(setSourceText(ev.currentTarget.value))}
             />
 
