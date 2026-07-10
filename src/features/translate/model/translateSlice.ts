@@ -1,6 +1,7 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { TranslateQueryData, TranslateResult } from "../api/types";
 import type { RootState } from "../../../app/model/store/store";
+import { translateApiSlice } from "../api/translateApiSlice";
 
 
 interface TranslateSlice {
@@ -40,6 +41,11 @@ export const translateSlice = createSlice({
             sliceState.mainTranslation = action.payload;
         }
     },
+    extraReducers: (builder) => {
+        builder.addMatcher(translateApiSlice.endpoints.getTranslation.matchFulfilled, (state, action) => {
+            state.mainTranslation = action.payload.translation
+        })
+    }
 });
 
 
