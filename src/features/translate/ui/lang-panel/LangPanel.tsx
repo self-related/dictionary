@@ -1,34 +1,37 @@
 import styles from "./LangPanel.module.css";
 import { langListsByProvider } from "../../api/providers";
-import { useState } from "react";
 import Button from "../../../../shared/ui/button/Button";
 import Select from "../../../../shared/ui/select/Select";
+import { useAppDispatch, useAppSelector } from "../../../../app/model/store/hooks";
+import { setSourceLang, setTargetLang } from "../../model/translateSlice";
 
 interface LangPanelProps {
     className?: string
 }
 
-const provider = "google"; // temp constant before store defined
 
 export default function LangPanel({ className = "" }: LangPanelProps) {
-    const langList = langListsByProvider[provider];
+    const dispatch = useAppDispatch();
 
-    const langIds = Object.keys(langList);
-    const targetLangIds = Object.keys(langList).filter(id => id !== "auto"); // skip auto
+    const { 
+        provider, 
+        sourceLang, 
+        targetLang 
+    } = useAppSelector(state => state.translateSlice.translateQueryData); // data from store
 
-    // replace by store state
-    const [sourceLangId] = useState(langIds[0]);
-    const [targetLangId] = useState(targetLangIds[0]);
+    const currentLangList = langListsByProvider[provider];
+    const langs = Object.keys(currentLangList);
+    const targetLangs = Object.keys(currentLangList).filter(id => id !== "auto"); // skip auto
 
 
     return (
         <div className={`${styles.langPanel} ${className}`}>
 
             {/* Source lang selector */}
-            <Select id="" defaultValue={sourceLangId} grow>
+            <Select id="" defaultValue={sourceLang} onChange={(ev) => dispatch(setSourceLang(ev.currentTarget.value))} grow>
                 {
-                    langIds.map((langId) => (
-                        <option value={langId} key={langId}>{langList[langId]}</option>
+                    langs.map((lang) => (
+                        <option value={lang} key={lang}>{currentLangList[lang]}</option>
                     ))
                 }
             </Select>
@@ -39,10 +42,10 @@ export default function LangPanel({ className = "" }: LangPanelProps) {
 
 
             {/* Target lang selector */}
-            <Select id="" defaultValue={targetLangId} grow>
+            <Select id="" defaultValue={targetLang} onChange={(ev) => dispatch(setTargetLang(ev.currentTarget.value))} grow>
                 {
-                    targetLangIds.map((langId) => (
-                        <option value={langId} key={langId}>{langList[langId]}</option>
+                    targetLangs.map((lang) => (
+                        <option value={lang} key={lang}>{currentLangList[lang]}</option>
                     ))
                 }
             </Select>
