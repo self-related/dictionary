@@ -1,11 +1,10 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { TranslateQueryData, TranslateResult } from "../api/types";
 import type { RootState } from "../../../app/model/store/store";
-import { translateApiSlice } from "../api/translateApiSlice";
 
 
 interface TranslateSlice {
-    mainTranslation: string,
+    mainTranslation: string | null,
     translateQueryData: TranslateQueryData,
     translateResult?: TranslateResult,
 }
@@ -17,7 +16,7 @@ const initialState: TranslateSlice = {
         targetLang: "es",
         sourceText: ""
     },
-    mainTranslation: "",
+    mainTranslation: null,
 };
 
 
@@ -40,12 +39,6 @@ export const translateSlice = createSlice({
         setMainTranslation: (sliceState, action: PayloadAction<string>) => {
             sliceState.mainTranslation = action.payload;
         }
-    },
-    extraReducers: (builder) => {
-        builder.addMatcher(translateApiSlice.endpoints.getTranslation.matchFulfilled, (state, action) => {
-            state.translateResult = action.payload;
-            state.mainTranslation = action.payload.translation;
-        })
     }
 });
 
