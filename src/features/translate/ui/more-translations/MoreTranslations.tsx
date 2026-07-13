@@ -4,7 +4,7 @@ import Option from "./ui/option/Option";
 
 export default function TranslateOptions() {
     const translationResult = useAppSelector(state => state.translateSlice.translateResult);
-    const translationElements = translationResult?.moreTranslations?.map(value => <Option key={`t-${value}`} value={value?.translation} />)
+    const translationElements = translationResult?.moreTranslations?.map((value, i) => <Option key={`t-${value}-${i}`} value={value?.translation} />)
     
     return (
         // Options with more translations
