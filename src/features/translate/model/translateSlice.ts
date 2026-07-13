@@ -5,7 +5,7 @@ import { translateApiSlice } from "../api/translateApiSlice";
 
 
 interface TranslateSlice {
-    mainTranslation: string | null,
+    customTranslation: string | null,
     translateQueryData: TranslateQueryData,
     translateResult?: TranslateResult,
 }
@@ -17,7 +17,7 @@ const initialState: TranslateSlice = {
         targetLang: "es",
         sourceText: ""
     },
-    mainTranslation: null,
+    customTranslation: null,
 };
 
 
@@ -38,12 +38,12 @@ export const translateSlice = createSlice({
             sliceState.translateQueryData.sourceText = action.payload;
         },
         setMainTranslation: (sliceState, action: PayloadAction<string>) => {
-            sliceState.mainTranslation = action.payload;
+            sliceState.customTranslation = action.payload;
         }
     },
     extraReducers: builder => {
         builder.addMatcher(translateApiSlice.endpoints.getTranslation.matchPending, (state) => {
-            state.mainTranslation = null;
+            state.customTranslation = null;
         })
     }
 });
@@ -52,4 +52,4 @@ export const translateSlice = createSlice({
 export const { setProvider, setSourceLang, setTargetLang, setSourceText, setMainTranslation } = translateSlice.actions;
 
 export const selectTranslateQueryData = (sliceState: RootState) => sliceState.translateSlice.translateQueryData;
-export const selectMainTranslation = (sliceState: RootState) => sliceState.translateSlice.mainTranslation;
+export const selectCustomTranslation = (sliceState: RootState) => sliceState.translateSlice.customTranslation;
