@@ -2,7 +2,7 @@ export interface LangList {
     [lang: string]: string
 }
 
-export interface TranslateQueryData {
+export interface TranslateQueryPayload {
     provider: string,
     sourceLang: string,
     sourceText: string,

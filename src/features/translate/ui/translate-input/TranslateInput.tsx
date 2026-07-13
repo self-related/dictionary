@@ -3,7 +3,7 @@ import styles from "./TranslateInput.module.css";
 import Button from "../../../../shared/ui/button/Button";
 import { useLazyGetTranslationQuery } from "../../api/translateApiSlice";
 import { useAppDispatch, useAppSelector } from "../../../../app/model/store/hooks";
-import { selectTranslateQueryData, setSourceText } from "../../model/translateSlice";
+import { selectTranslateQueryPayload, setSourceText } from "../../model/translateSlice";
 
 
 interface TranslateInputProps {
@@ -13,7 +13,7 @@ interface TranslateInputProps {
 
 export default function TranslateInput({ className }: TranslateInputProps) {
     const dispatch = useAppDispatch();
-    const translateQueryData = useAppSelector(selectTranslateQueryData);
+    const translateQueryPayload = useAppSelector(selectTranslateQueryPayload);
     
     const [autoTranslate, setAutoTranslate] = useState<boolean>(true);
 
@@ -21,10 +21,10 @@ export default function TranslateInput({ className }: TranslateInputProps) {
     console.debug(`query: ${JSON.stringify(debugData)?.slice(0, 120)}...`);
 
     useEffect(() => {
-        if (translateQueryData.sourceText === "") return;
+        if (translateQueryPayload.sourceText === "") return;
         // Temp constants with actual input
-        fetchTransltaion(translateQueryData)
-    }, [translateQueryData, fetchTransltaion]);
+        fetchTransltaion(translateQueryPayload)
+    }, [translateQueryPayload, fetchTransltaion]);
 
 
     return (
@@ -32,7 +32,7 @@ export default function TranslateInput({ className }: TranslateInputProps) {
             {/* input */}
             <textarea
                 className={styles.translateInput}
-                value={translateQueryData.sourceText}
+                value={translateQueryPayload.sourceText}
                 onInput={(ev) => dispatch(setSourceText(ev.currentTarget.value))}
             />
 

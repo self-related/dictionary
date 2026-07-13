@@ -1,17 +1,17 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type { TranslateQueryData, TranslateResult } from "../api/types";
+import type { TranslateQueryPayload, TranslateResult } from "../api/types";
 import type { RootState } from "../../../app/model/store/store";
 import { translateApiSlice } from "../api/translateApiSlice";
 
 
 interface TranslateSlice {
     customTranslation: string | null,
-    translateQueryData: TranslateQueryData,
+    translateQueryPayload: TranslateQueryPayload,
     translateResult?: TranslateResult,
 }
 
 const initialState: TranslateSlice = {
-    translateQueryData: {
+    translateQueryPayload: {
         provider: "google",
         sourceLang: "en",
         targetLang: "es",
@@ -26,16 +26,16 @@ export const translateSlice = createSlice({
     initialState,
     reducers: {
         setProvider: (sliceState, action: PayloadAction<string>) => {
-            sliceState.translateQueryData.provider = action.payload;
+            sliceState.translateQueryPayload.provider = action.payload;
         },
         setSourceLang: (sliceState, action: PayloadAction<string>) => { 
-            sliceState.translateQueryData.sourceLang = action.payload;
+            sliceState.translateQueryPayload.sourceLang = action.payload;
         },
         setTargetLang: (sliceState, action: PayloadAction<string>) => { 
-            sliceState.translateQueryData.targetLang = action.payload;
+            sliceState.translateQueryPayload.targetLang = action.payload;
         },
         setSourceText: (sliceState, action: PayloadAction<string>) => { 
-            sliceState.translateQueryData.sourceText = action.payload;
+            sliceState.translateQueryPayload.sourceText = action.payload;
         },
         setMainTranslation: (sliceState, action: PayloadAction<string>) => {
             sliceState.customTranslation = action.payload;
@@ -51,5 +51,5 @@ export const translateSlice = createSlice({
 
 export const { setProvider, setSourceLang, setTargetLang, setSourceText, setMainTranslation } = translateSlice.actions;
 
-export const selectTranslateQueryData = (sliceState: RootState) => sliceState.translateSlice.translateQueryData;
+export const selectTranslateQueryPayload = (sliceState: RootState) => sliceState.translateSlice.translateQueryPayload;
 export const selectCustomTranslation = (sliceState: RootState) => sliceState.translateSlice.customTranslation;

@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery }  from "@reduxjs/toolkit/query/react";
-import { type TranslateQueryData, type TranslateResult } from "./types";
+import { type TranslateQueryPayload, type TranslateResult } from "./types";
 import { getUrl, transformResponseData } from "./providers";
 
 
@@ -7,9 +7,9 @@ export const translateApiSlice = createApi({
     reducerPath: "translateApi",
     baseQuery: fetchBaseQuery(),
     endpoints: builder => ({
-        getTranslation: builder.query<TranslateResult, TranslateQueryData>({
-            query: (queryData) => ({
-                url: getUrl(queryData)
+        getTranslation: builder.query<TranslateResult, TranslateQueryPayload>({
+            query: (queryPayload) => ({
+                url: getUrl(queryPayload)
             }),
             transformResponse: (responseData, _meta, { provider }) => transformResponseData(responseData, provider)
         })
@@ -17,4 +17,4 @@ export const translateApiSlice = createApi({
 });
 
 export const { useLazyGetTranslationQuery } = translateApiSlice;
-export const useTranslationResultSelector = translateApiSlice.endpoints.getTranslation.select;
+export const selectGetTranslationResult = translateApiSlice.endpoints.getTranslation.select;

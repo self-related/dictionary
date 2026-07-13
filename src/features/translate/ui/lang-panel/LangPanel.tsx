@@ -17,7 +17,7 @@ export default function LangPanel({ className = "" }: LangPanelProps) {
         provider, 
         sourceLang, 
         targetLang 
-    } = useAppSelector(state => state.translateSlice.translateQueryData); // data from store
+    } = useAppSelector(state => state.translateSlice.translateQueryPayload); // data from store
 
     const currentLangList = langListsByProvider[provider];
     const langs = Object.keys(currentLangList);
