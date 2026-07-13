@@ -1,4 +1,4 @@
-import styles from "./TranslateOptions.module.css";
+import styles from "./MoreTranslations.module.css";
 import Option from "./ui/option/Option";
 
 export default function TranslateOptions() {
