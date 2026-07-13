@@ -8,7 +8,7 @@ export default function TranslateOptions() {
     
     return (
         // Options with more translations
-        <div className={styles.translateOptions}>
+        <div className={styles.moreTranslations}>
             {
                 translationElements
             }
