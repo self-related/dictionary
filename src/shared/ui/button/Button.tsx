@@ -1,11 +1,10 @@
 import styles from "./Button.module.css";
 
 
-type ButtonProps = {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     transparent?: boolean,
     grow?: boolean,
-} & React.HTMLAttributes<HTMLButtonElement>; // rest button props
-
+}
 
 export default function Button({
     children, 

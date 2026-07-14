@@ -1,9 +1,9 @@
 import styles from "./Select.module.css";
 
 
-type SelectProps = {
+interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
     grow?: boolean,
-} & React.HTMLAttributes<HTMLSelectElement>;
+};
 
 
 export default function Select({children, className = "", grow, ...rest}: SelectProps) {
