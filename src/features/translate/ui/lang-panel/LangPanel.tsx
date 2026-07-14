@@ -3,7 +3,7 @@ import { langListsByProvider } from "../../api/providers";
 import Button from "../../../../shared/ui/button/Button";
 import Select from "../../../../shared/ui/select/Select";
 import { useAppDispatch, useAppSelector } from "../../../../app/model/store/hooks";
-import { selectCustomTranslation, setMainTranslation, setSourceLang, setSourceText, setTargetLang, switchLangs } from "../../model/translateSlice";
+import { selectCustomTranslation, setCustomTranslation, setSourceLang, setSourceText, setTargetLang, switchLangs } from "../../model/translateSlice";
 import { useSelectTranslateQueryLastResult } from "../../hooks/apiHooks";
 
 interface LangPanelProps {
@@ -38,10 +38,10 @@ export default function LangPanel({ className = "" }: LangPanelProps) {
 
         if (customTranslation) {
             dispatch(setSourceText(customTranslation));
-            dispatch(setMainTranslation(sourceText));
+            dispatch(setCustomTranslation(sourceText));
         } else if (translation) {
             dispatch(setSourceText(translation));
-            dispatch(setMainTranslation(sourceText));
+            dispatch(setCustomTranslation(sourceText));
         }
     };
 

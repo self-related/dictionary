@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from "../../../../app/model/store/hooks";
 import Button from "../../../../shared/ui/button/Button";
 import { useSelectTranslateQueryLastResult } from "../../hooks/apiHooks";
-import { selectCustomTranslation, setMainTranslation } from "../../model/translateSlice";
+import { selectCustomTranslation, setCustomTranslation } from "../../model/translateSlice";
 import styles from "./TranslateOutput.module.css";
 
 
@@ -21,7 +21,7 @@ export default function TranslateOutput({ className }: TranslateOutputProps) {
         <div className={`${styles.translateOutput} shadowedText ${className}`}>
             <textarea 
                 value={customTranslation ?? lastTranslateResult?.translation} 
-                onInput={(ev) => dispatch(setMainTranslation(ev.currentTarget.value))} 
+                onInput={(ev) => dispatch(setCustomTranslation(ev.currentTarget.value))} 
             />
 
             <div className={styles.buttonsWrap}>
