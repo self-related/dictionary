@@ -56,7 +56,7 @@ export default function TranslateInput({ className }: TranslateInputProps) {
                     />
                 </label>
 
-                <Button>Clear</Button>
+                <Button onClick={() => dispatch(setSourceText(""))}>Clear</Button>
                 <Button onClick={handleFetchTranslation}>Translate</Button>
             </div>
         
