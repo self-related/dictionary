@@ -3,7 +3,8 @@ import { langListsByProvider } from "../../api/providers";
 import Button from "../../../../shared/ui/button/Button";
 import Select from "../../../../shared/ui/select/Select";
 import { useAppDispatch, useAppSelector } from "../../../../app/model/store/hooks";
-import { setSourceLang, setTargetLang, switchLangs } from "../../model/translateSlice";
+import { selectCustomTranslation, setMainTranslation, setSourceLang, setSourceText, setTargetLang, switchLangs } from "../../model/translateSlice";
+import { useSelectTranslateQueryLastResult } from "../../hooks/apiHooks";
 
 interface LangPanelProps {
     className?: string
@@ -16,9 +17,13 @@ export default function LangPanel({ className = "" }: LangPanelProps) {
     const { 
         provider, 
         sourceLang, 
-        targetLang 
+        targetLang,
+        sourceText
     } = useAppSelector(state => state.translateSlice.translateQueryPayload);
 
+    const customTranslation = useAppSelector(selectCustomTranslation);
+    const translation = useSelectTranslateQueryLastResult()?.translation;
+    
     const currentLangList = langListsByProvider[provider];
     const langs = Object.keys(currentLangList);
     const targetLangs = Object.keys(currentLangList).filter(id => id !== "auto"); // skip auto for target
@@ -28,7 +33,16 @@ export default function LangPanel({ className = "" }: LangPanelProps) {
         if (sourceLang == "auto") {
             return; // skip auto for now
         }
-       dispatch(switchLangs());
+        
+        dispatch(switchLangs());
+
+        if (customTranslation) {
+            dispatch(setSourceText(customTranslation));
+            dispatch(setMainTranslation(sourceText));
+        } else if (translation) {
+            dispatch(setSourceText(translation));
+            dispatch(setMainTranslation(sourceText));
+        }
     };
 
 
