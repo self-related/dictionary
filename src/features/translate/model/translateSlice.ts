@@ -39,6 +39,10 @@ export const translateSlice = createSlice({
         },
         setMainTranslation: (sliceState, action: PayloadAction<string>) => {
             sliceState.customTranslation = action.payload;
+        },
+        switchLangs: (sliceState) => {
+            // swap languages
+            [sliceState.translateQueryPayload.sourceLang, sliceState.translateQueryPayload.targetLang] = [sliceState.translateQueryPayload.targetLang, sliceState.translateQueryPayload.sourceLang];
         }
     },
     extraReducers: builder => {
@@ -49,7 +53,7 @@ export const translateSlice = createSlice({
 });
 
 
-export const { setProvider, setSourceLang, setTargetLang, setSourceText, setMainTranslation } = translateSlice.actions;
+export const { setProvider, setSourceLang, setTargetLang, setSourceText, setMainTranslation, switchLangs } = translateSlice.actions;
 
 export const selectTranslateQueryPayload = (sliceState: RootState) => sliceState.translateSlice.translateQueryPayload;
 export const selectCustomTranslation = (sliceState: RootState) => sliceState.translateSlice.customTranslation;
