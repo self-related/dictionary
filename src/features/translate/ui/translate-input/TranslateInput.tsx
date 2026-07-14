@@ -21,10 +21,9 @@ export default function TranslateInput({ className }: TranslateInputProps) {
     console.debug(`query: ${JSON.stringify(debugData)?.slice(0, 120)}...`);
 
     useEffect(() => {
-        if (translateQueryPayload.sourceText === "") return;
-        // Temp constants with actual input
+        if (!autoTranslate || translateQueryPayload.sourceText === "") return;
         fetchTransltaion(translateQueryPayload)
-    }, [translateQueryPayload, fetchTransltaion]);
+    }, [autoTranslate, translateQueryPayload, fetchTransltaion]);
 
 
     return (
