@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styles from "./TranslateInput.module.css";
 import Button from "../../../../shared/ui/button/Button";
 import { useLazyGetTranslationQuery } from "../../api/translateApiSlice";
@@ -20,10 +20,19 @@ export default function TranslateInput({ className }: TranslateInputProps) {
     const [fetchTransltaion, { data: debugData }] = useLazyGetTranslationQuery();
     console.debug(`query: ${JSON.stringify(debugData)?.slice(0, 120)}...`);
 
+
+    const handleFetchTranslation = useCallback(() => {
+        if (translateQueryPayload.sourceText.trim() !== "") {
+            fetchTransltaion(translateQueryPayload);
+        }
+    }, [translateQueryPayload, fetchTransltaion]);
+
+
     useEffect(() => {
-        if (!autoTranslate || translateQueryPayload.sourceText === "") return;
-        fetchTransltaion(translateQueryPayload)
-    }, [autoTranslate, translateQueryPayload, fetchTransltaion]);
+        if (autoTranslate) {
+            handleFetchTranslation();
+        }
+    }, [autoTranslate, handleFetchTranslation]);
 
 
     return (
@@ -48,7 +57,7 @@ export default function TranslateInput({ className }: TranslateInputProps) {
                 </label>
 
                 <Button>Clear</Button>
-                <Button>Translate</Button>
+                <Button onClick={handleFetchTranslation}>Translate</Button>
             </div>
         
         </div>
