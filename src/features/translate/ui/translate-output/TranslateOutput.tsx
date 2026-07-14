@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from "../../../../app/model/store/hooks";
 import Button from "../../../../shared/ui/button/Button";
-import { selectGetTranslationResult } from "../../api/translateApiSlice";
+import { selectTranslateQueryResult } from "../../api/translateApiSlice";
 import { selectCustomTranslation, selectTranslateQueryPayload, setMainTranslation } from "../../model/translateSlice";
 import styles from "./TranslateOutput.module.css";
 
@@ -12,7 +12,7 @@ export default function TranslateOutput({ className }: TranslateOutputProps) {
     const dispatch = useAppDispatch();
 
     const lastQueryPayload = useAppSelector(selectTranslateQueryPayload);
-    const lastQueryResult = useAppSelector(selectGetTranslationResult(lastQueryPayload));
+    const lastQueryResult = useAppSelector(selectTranslateQueryResult(lastQueryPayload));
     const customTranslation = useAppSelector(selectCustomTranslation);
 
  

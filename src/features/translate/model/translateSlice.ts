@@ -42,7 +42,7 @@ export const translateSlice = createSlice({
         }
     },
     extraReducers: builder => {
-        builder.addMatcher(translateApiSlice.endpoints.getTranslation.matchPending, (state) => {
+        builder.addMatcher(translateApiSlice.endpoints.translate.matchPending, (state) => {
             state.customTranslation = null;
         })
     }

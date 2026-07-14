@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import styles from "./TranslateInput.module.css";
 import Button from "../../../../shared/ui/button/Button";
-import { useLazyGetTranslationQuery } from "../../api/translateApiSlice";
+import { useLazyTranslateQuery } from "../../api/translateApiSlice";
 import { useAppDispatch, useAppSelector } from "../../../../app/model/store/hooks";
 import { selectTranslateQueryPayload, setSourceText } from "../../model/translateSlice";
 
@@ -17,7 +17,7 @@ export default function TranslateInput({ className }: TranslateInputProps) {
     
     const [autoTranslate, setAutoTranslate] = useState<boolean>(true);
 
-    const [fetchTransltaion, { data: debugData }] = useLazyGetTranslationQuery();
+    const [fetchTransltaion, { data: debugData }] = useLazyTranslateQuery();
     console.debug(`query: ${JSON.stringify(debugData)?.slice(0, 120)}...`);
 
 

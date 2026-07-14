@@ -7,7 +7,7 @@ export const translateApiSlice = createApi({
     reducerPath: "translateApi",
     baseQuery: fetchBaseQuery(),
     endpoints: builder => ({
-        getTranslation: builder.query<TranslateResult, TranslateQueryPayload>({
+        translate: builder.query<TranslateResult, TranslateQueryPayload>({
             query: (queryPayload) => ({
                 url: getUrl(queryPayload)
             }),
@@ -16,5 +16,5 @@ export const translateApiSlice = createApi({
     })
 });
 
-export const { useLazyGetTranslationQuery } = translateApiSlice;
-export const selectGetTranslationResult = translateApiSlice.endpoints.getTranslation.select;
+export const { useLazyTranslateQuery } = translateApiSlice;
+export const selectTranslateQueryResult = translateApiSlice.endpoints.translate.select;
