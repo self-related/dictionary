@@ -28,7 +28,7 @@ export default function LangPanel({ className = "" }: LangPanelProps) {
         if (sourceLang == "auto") {
             return; // skip auto for now
         }
-       dispatch(switchLangs()); 
+       dispatch(switchLangs());
     };
 
 

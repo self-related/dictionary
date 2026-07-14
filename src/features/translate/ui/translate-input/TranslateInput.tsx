@@ -17,8 +17,8 @@ export default function TranslateInput({ className }: TranslateInputProps) {
     
     const [autoTranslate, setAutoTranslate] = useState<boolean>(true);
 
-    const [fetchTransltaion, { data: debugData }] = useLazyTranslateQuery();
-    console.debug(`query: ${JSON.stringify(debugData)?.slice(0, 120)}...`);
+    const [fetchTransltaion, { data }] = useLazyTranslateQuery();
+    console.debug(`query: ${JSON.stringify(data)?.slice(0, 120)}...`);
 
 
     const handleFetchTranslation = useCallback(() => {

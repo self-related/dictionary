@@ -17,4 +17,3 @@ export const translateApiSlice = createApi({
 });
 
 export const { useLazyTranslateQuery } = translateApiSlice;
-export const selectTranslateQueryResult = translateApiSlice.endpoints.translate.select;

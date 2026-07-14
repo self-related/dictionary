@@ -1,25 +1,26 @@
 import { useAppDispatch, useAppSelector } from "../../../../app/model/store/hooks";
 import Button from "../../../../shared/ui/button/Button";
-import { selectTranslateQueryResult } from "../../api/translateApiSlice";
-import { selectCustomTranslation, selectTranslateQueryPayload, setMainTranslation } from "../../model/translateSlice";
+import { useSelectTranslateQueryLastResult } from "../../hooks/apiHooks";
+import { selectCustomTranslation, setMainTranslation } from "../../model/translateSlice";
 import styles from "./TranslateOutput.module.css";
+
 
 interface TranslateOutputProps {
     className?: string
 }
 
+
 export default function TranslateOutput({ className }: TranslateOutputProps) {
     const dispatch = useAppDispatch();
 
-    const lastQueryPayload = useAppSelector(selectTranslateQueryPayload);
-    const lastQueryResult = useAppSelector(selectTranslateQueryResult(lastQueryPayload));
+    const lastTranslateResult = useSelectTranslateQueryLastResult();
     const customTranslation = useAppSelector(selectCustomTranslation);
 
  
     return (
         <div className={`${styles.translateOutput} shadowedText ${className}`}>
             <textarea 
-                value={customTranslation ?? lastQueryResult.data?.translation} 
+                value={customTranslation ?? lastTranslateResult?.translation} 
                 onInput={(ev) => dispatch(setMainTranslation(ev.currentTarget.value))} 
             />
 

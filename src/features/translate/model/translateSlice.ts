@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type { TranslateQueryPayload, TranslateResult } from "../api/types";
+import type { TranslateQueryPayload } from "../api/types";
 import type { RootState } from "../../../app/model/store/store";
 import { translateApiSlice } from "../api/translateApiSlice";
 
@@ -7,7 +7,6 @@ import { translateApiSlice } from "../api/translateApiSlice";
 interface TranslateSlice {
     customTranslation: string | null,
     translateQueryPayload: TranslateQueryPayload,
-    translateResult?: TranslateResult,
 }
 
 const initialState: TranslateSlice = {
@@ -53,7 +52,14 @@ export const translateSlice = createSlice({
 });
 
 
-export const { setProvider, setSourceLang, setTargetLang, setSourceText, setMainTranslation, switchLangs } = translateSlice.actions;
+export const { 
+    setProvider, 
+    setSourceLang, 
+    setTargetLang, 
+    setSourceText, 
+    setMainTranslation, 
+    switchLangs 
+} = translateSlice.actions;
 
-export const selectTranslateQueryPayload = (sliceState: RootState) => sliceState.translateSlice.translateQueryPayload;
-export const selectCustomTranslation = (sliceState: RootState) => sliceState.translateSlice.customTranslation;
+export const selectTranslateQueryPayload = (state: RootState) => state.translateSlice.translateQueryPayload;
+export const selectCustomTranslation = (state: RootState) => state.translateSlice.customTranslation;
