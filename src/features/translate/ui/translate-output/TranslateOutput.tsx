@@ -25,7 +25,11 @@ export default function TranslateOutput({ className }: TranslateOutputProps) {
             />
 
             <div className={styles.buttonsWrap}>
-                <Button>Reset</Button>      {/* reset to default translation (if option was chosen) */}
+                {/* nullify custom translation */} 
+                <Button onClick={() => dispatch(setCustomTranslation(null))}>
+                    Reset
+                </Button>      
+
                 <Button>Add -&gt;</Button>  {/* add to dictionary */}
             </div>
         </div>
