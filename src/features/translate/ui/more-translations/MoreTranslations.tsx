@@ -1,7 +1,9 @@
+import { useAppDispatch } from "../../../../app/model/store/hooks";
 import type { TranslationVerbose } from "../../api/types";
 import { useSelectTranslateQueryLastResult } from "../../hooks/apiHooks";
+import { setCustomTranslation } from "../../model/translateSlice";
 import styles from "./MoreTranslations.module.css";
-import Option from "./ui/option/Option";
+import TranslationOption from "./ui/translation-option/TranslationOption";
 
 interface TranslationsByGroupMap {
     [group: string]: string[]
@@ -11,12 +13,12 @@ interface TranslationsByGroupMap {
 export default function MoreTranslations() {
     const lastTranslateResult = useSelectTranslateQueryLastResult();
     const translationsByGroupMap = groupTranslations(lastTranslateResult?.moreTranslations);
-    const translationsGrouppedJSX = prepGrouppedTranslationsJSX(translationsByGroupMap);
+    const translationGroupsJSX = usePrepGrouppedTranslationsJSX(translationsByGroupMap);
     
     return (
         <div className={styles.moreTranslations}>
             {
-                translationsGrouppedJSX
+                translationGroupsJSX
             }
         </div>
     );
@@ -35,16 +37,19 @@ function groupTranslations(moreTranslations: TranslationVerbose[] = []): Transla
     return translationsByGroupMap;
 }
 
-function prepGrouppedTranslationsJSX(translationsByGroup: TranslationsByGroupMap): React.JSX.Element[] {
+function usePrepGrouppedTranslationsJSX(translationsByGroup: TranslationsByGroupMap): React.JSX.Element[] {
+    const dispatch = useAppDispatch();
     const groupsJSX = [] as React.JSX.Element[];
 
     for (const group in translationsByGroup) {
-        const currentGroupWords = translationsByGroup[group]
+        const currentGroupTranslations = translationsByGroup[group];
         const currentGroupJSX = (
             <div className={styles.wordGroup} key={`${group}-word-group`}>
                 <span>{group}: </span>
                 {
-                    currentGroupWords.map((value, i) => (<Option key={`t-${i}`} value={value} />))
+                    currentGroupTranslations.map((value, i) => (
+                        <TranslationOption key={`t-${i}`} value={value} onClick={() => dispatch(setCustomTranslation(value))} />
+                    ))
                 }
             </div>
         );
