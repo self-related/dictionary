@@ -1,8 +1,13 @@
-.inputWrap {
+.translateInput {
     display: block;
 }
 
-.translateInput {
+.textAreaWrap {
+    position: relative;
+    width: 100%;
+}
+
+.textArea {
     background-color: var(--background-color-2);
     border: none;
     border-radius: 3px;
@@ -12,11 +17,39 @@
     height: 9rem;
     resize: none;
     padding: 0.5rem;
+    padding-right: 2rem;
     text-shadow: inherit;
     width: 100%;
+    
+    &:hover, .textAreaWrap:hover & {
+        background-color: var(--background-color-2-hover);
+    }
+}
+
+.clearBtn {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.4rem;
+
+    background: none;
+    border: none;
+    border-radius: 2px;
+    color: #fc4566;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: normal;
+    text-shadow: inherit;
+    width: 1.4rem;
+    text-align: center;
+    aspect-ratio: 1/1;
+    padding-right: 0.33rem;
+
 
     &:hover {
-        background-color: var(--background-color-2-hover);
+        background-color: var(--hover-color);
+    }
+    &:active {
+        background-color: var(--active-color);
     }
 }
 
@@ -40,4 +73,8 @@
         width: 0.9rem;
         margin-left: 0.5rem;
     }
+}
+
+.hidden {
+    display: none;
 }

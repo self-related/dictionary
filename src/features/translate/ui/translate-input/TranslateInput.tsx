@@ -11,9 +11,10 @@ interface TranslateInputProps {
 }
 
 
-export default function TranslateInput({ className }: TranslateInputProps) {
+export default function TranslateInput({ className = "" }: TranslateInputProps) {
     const dispatch = useAppDispatch();
     const translateQueryPayload = useAppSelector(selectTranslateQueryPayload);
+    const sourceTextEmpty = useAppSelector(state => state.translateSlice.translateQueryPayload.sourceText) === "";
     
     const [autoTranslate, setAutoTranslate] = useState<boolean>(true);
 
@@ -35,14 +36,25 @@ export default function TranslateInput({ className }: TranslateInputProps) {
     }, [autoTranslate, handleFetchTranslation]);
 
 
+    // css modifiers
+    const clearBtnMod = sourceTextEmpty ? styles.hidden : "";
+
     return (
-        <div className={`${styles.inputWrap} shadowedText ${className}`}>
-            {/* input */}
-            <textarea
-                className={styles.translateInput}
-                value={translateQueryPayload.sourceText}
-                onInput={(ev) => dispatch(setSourceText(ev.currentTarget.value))}
-            />
+        <div className={`${styles.translateInput} shadowedText ${className}`}>
+            <div className={styles.textAreaWrap}>
+                {/* input */}
+                <textarea
+                    className={styles.textArea}
+                    value={translateQueryPayload.sourceText}
+                    onInput={(ev) => dispatch(setSourceText(ev.currentTarget.value))}
+                />
+                {/* floating X button */}
+                <button onClick={() => dispatch(setSourceText(""))} 
+                    className={`${styles.clearBtn} ${clearBtnMod}`}
+                >
+                    X
+                </button>
+            </div>
 
             {/* checkbox and buttons  */}
             <div className={styles.buttonsWrap}>
@@ -59,7 +71,6 @@ export default function TranslateInput({ className }: TranslateInputProps) {
                 <Button onClick={() => dispatch(setSourceText(""))}>Clear</Button>
                 <Button onClick={handleFetchTranslation}>Translate</Button>
             </div>
-        
         </div>
     );
 }
