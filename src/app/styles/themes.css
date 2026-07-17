@@ -17,7 +17,7 @@ body {
 
     @media (prefers-color-scheme: light) {
         --text-color: rgb(27, 27, 27);
-        --text-shadow-color: none;
+        --text-shadow-color: transparent;
 
         --background-color-1: white;
         --background-color-2: #e4ebf4;
@@ -53,13 +53,17 @@ body {
     --button-background: #606060;
     --border-color: #808080;
     --nav-color: black;
+
+    /* apply defaults to inherit */
+    color: var(--text-color);
+    text-shadow: 0.07rem 0.05rem 0.1rem var(--text-shadow-color);
 }
 
 
 /* manual light theme */
 .lightTheme {
     --text-color: rgb(27, 27, 27);
-    --text-shadow-color: none;
+    --text-shadow-color: transparent;
 
     --background-color-1: white;
     --background-color-2: #e4ebf4;
@@ -70,6 +74,19 @@ body {
     --button-background: #e4ebf4;
     --border-color: #c1cad6;
     --nav-color: transparent;
+
+    /* apply defaults to inherit*/
+    color: var(--text-color);
+    text-shadow: 0.07rem 0.05rem 0.1rem var(--text-shadow-color)
+}
+
+/* changes scroller color */
+body:has(.lightTheme) {
+    background-color: white;
+}
+
+body:has(.darkTheme) {
+    background-color: black;
 }
 
 
