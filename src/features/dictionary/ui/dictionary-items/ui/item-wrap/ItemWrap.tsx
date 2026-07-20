@@ -1,4 +1,4 @@
-import styles from "./WordItem.module.css"
+import styles from "./ItemWrap.module.css"
 
 
 interface WordItemProps {

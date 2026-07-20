@@ -1,6 +1,6 @@
 import { useState } from "react";
-import styles from "./DictionaryWords.module.css"
-import WordItem from "./ui/word-item/WordItem";
+import styles from "./DictionaryItems.module.css"
+import ItemWrap from "./ui/item-wrap/ItemWrap";
 
 interface TestWords {
     id: number,
@@ -30,7 +30,7 @@ export default function DictionaryWords() {
             {
                 (words.length === 0)
                 ? <p className={styles.placeholder}>No words yet</p>
-                : words.map((wordProps, i) => <WordItem key={i} {...wordProps} />)
+                : words.map((wordProps, i) => <ItemWrap key={i} {...wordProps} />)
             }
         </div>
     );
