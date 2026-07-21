@@ -1,5 +1,5 @@
 import { getUrlGoogle, langListGoogle, transformResponseDataGoogle } from "./google";
-import type { LangList, TranslateQueryData, TranslateResult } from "../types";
+import type { LangList, TranslateQueryPayload, TranslateResult } from "../types";
 
 
 /* Local types */
@@ -9,7 +9,7 @@ interface LangListByProvider {
 
 
 /* Groupped imports from each provider */
-const providerUrlGetters: { [provider: string]: (data: TranslateQueryData) => string } = {
+const providerUrlGetters: { [provider: string]: (data: TranslateQueryPayload) => string } = {
     google: getUrlGoogle,
 }
 
@@ -23,7 +23,7 @@ export const langListsByProvider: LangListByProvider = {
 
 
 /* Unified functions */
-export function getUrl(data: TranslateQueryData) {
+export function getUrl(data: TranslateQueryPayload) {
     const provider = data.provider;
     const url = providerUrlGetters[provider](data);
     return url;

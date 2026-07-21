@@ -1,4 +1,4 @@
-import type { LangList, TranslateQueryData, TranslateResult, TranslationVerbose } from "../types";
+import type { LangList, TranslateQueryPayload, TranslateResult, TranslationVerbose } from "../types";
 
 const BASE_URL = "https://translate.googleapis.com";
 
@@ -20,7 +20,7 @@ interface TranslateResponseGoogle {
 }
 
 
-export function getUrlGoogle({ sourceText, sourceLang, targetLang }: TranslateQueryData): string {
+export function getUrlGoogle({ sourceText, sourceLang, targetLang }: TranslateQueryPayload): string {
     return `${BASE_URL}/translate_a/single?client=gtx&sl=${sourceLang}&tl=${targetLang}&dt=t&dt=bd&dj=1&q=${sourceText}`;
 };
 
