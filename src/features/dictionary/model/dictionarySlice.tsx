@@ -4,6 +4,7 @@ import type { TranslateResult } from "../../translate/api/types";
 
 interface DictionaryItem extends TranslateResult {
     sourceText: string,
+    learned: boolean,
     currentTranslation?: string
     currentWordClass?: string
 }
