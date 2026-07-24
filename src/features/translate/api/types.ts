@@ -17,5 +17,5 @@ export interface TranslationVerbose {
 
 export interface TranslateResult {
     translation: string,
-    moreTranslations: TranslationVerbose[]
+    moreTranslations?: TranslationVerbose[]
 }

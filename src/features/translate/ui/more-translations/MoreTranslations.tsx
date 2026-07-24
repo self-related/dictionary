@@ -28,10 +28,12 @@ export default function MoreTranslations() {
 // Utils
 function groupTranslations(moreTranslations: TranslationVerbose[] = []): TranslationsByGroupMap {
     const translationsByGroupMap = {} as TranslationsByGroupMap;
-    
-    for (const { wordClass: group, translation } of moreTranslations) {
-        const addedAlready = translationsByGroupMap[group] ?? [];
-        translationsByGroupMap[group] = [translation, ...addedAlready];
+
+    if (moreTranslations) {
+        for (const { wordClass: group, translation } of moreTranslations) {
+            const addedAlready = translationsByGroupMap[group] ?? [];
+            translationsByGroupMap[group] = [translation, ...addedAlready];
+        }
     }
 
     return translationsByGroupMap;
