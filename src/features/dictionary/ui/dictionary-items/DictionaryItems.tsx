@@ -1,29 +1,20 @@
 import { useState } from "react";
 import styles from "./DictionaryItems.module.css"
 import ItemWrap from "./ui/item-wrap/ItemWrap";
+import type { DictionaryItem } from "../../model/dictionarySlice";
 
-interface TestWords {
-    id: number,
-    source: string,
-    target: string,
-    sourceLang: string,
-    targetLang: string,
-    learned?: boolean
-
-}
-
-const testWords: TestWords[] = [
-    {id: 0, source: "sourcesourcesourceso urcesourcesourcesourc esourcesourcesourcesource urcesourcesources ourcesourcesourcesour cesource urcesourcesourcesourcesourcesourcesourcesource urcesourcesourcesourcesourcesourcesourcesource urcesourcesourcesourcesourcesourcesourcesource", target: "target", sourceLang: "English", targetLang: "Spanish"},
-    {id: 0, source: "source1", target: "target", sourceLang: "English", targetLang: "Spanish", learned: true},
-    {id: 0, source: "source", target: "target", sourceLang: "English", targetLang: "Spanish"},
-    {id: 0, source: "source", target: "target", sourceLang: "English", targetLang: "Spanish"},
-    {id: 0, source: "source", target: "target", sourceLang: "English", targetLang: "Spanish"},
-    {id: 0, source: "source", target: "target", sourceLang: "English", targetLang: "Spanish"},
-    {id: 0, source: "source", target: "target", sourceLang: "English", targetLang: "Spanish"},
+const testWords: DictionaryItem[] = [
+    {sourceText: "sourcesourcesourceso urcesourcesourcesourc esourcesourcesourcesource urcesourcesources ourcesourcesourcesour cesource urcesourcesourcesourcesourcesourcesourcesource urcesourcesourcesourcesourcesourcesourcesource urcesourcesourcesourcesourcesourcesourcesource", translation: "translation", sourceLang: "English", targetLang: "Spanish", learned: false},
+    {sourceText: "source1", translation: "translation", sourceLang: "English", targetLang: "Spanish", learned: true},
+    {sourceText: "source", translation: "translation", sourceLang: "English", targetLang: "Spanish", learned: false},
+    {sourceText: "source", translation: "translation", sourceLang: "English", targetLang: "Spanish", learned: false},
+    {sourceText: "source", translation: "translation", sourceLang: "English", targetLang: "Spanish", learned: false},
+    {sourceText: "source", translation: "translation", sourceLang: "English", targetLang: "Spanish", learned: false},
+    {sourceText: "source", translation: "translation", sourceLang: "English", targetLang: "Spanish", learned: false}
 ];
 
 export default function DictionaryWords() {
-    const [words] = useState<TestWords[]>(testWords); // temp state
+    const [words] = useState<DictionaryItem[]>(testWords); // temp state
 
     return (
         <div className={styles.dictionaryWords}>

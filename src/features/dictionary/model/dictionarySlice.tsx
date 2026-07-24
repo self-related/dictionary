@@ -2,11 +2,14 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { TranslateResult } from "../../translate/api/types";
 
 
-interface DictionaryItem extends TranslateResult {
+export interface DictionaryItem extends TranslateResult {
+    sourceLang: string,
+    targetLang: string,
     sourceText: string,
     learned: boolean,
-    currentTranslation?: string
-    currentWordClass?: string
+    
+    currentTranslation?: string,
+    currentTranslationWordClass?: string,
 }
 
 interface DictionarySlice {

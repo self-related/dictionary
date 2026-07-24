@@ -1,22 +1,20 @@
+import type { TranslationVerbose } from "../../../../../translate/api/types";
 import styles from "./ItemWrap.module.css"
 
 
 interface WordItemProps {
-    id: number,
-
-    source: string,
-    target: string,
-
+    sourceText: string,
+    translation: string,
     sourceLang: string,
     targetLang: string,
     
-    otherTranslations?: string[],
+    moreTranslations?: TranslationVerbose[],
     learned?: boolean,
 }
 
 
 export default function WordItem({
-    source, target, sourceLang, targetLang, learned
+    sourceText, sourceLang, targetLang, translation, learned
 }: WordItemProps) {
     const learnedClass = (learned) ? styles.learned : styles.notLearned;
 
@@ -27,13 +25,13 @@ export default function WordItem({
                 {/* source */}
                 <p>
                     <span className={learnedClass}>{sourceLang}: </span>
-                    {source}
+                    {sourceText}
                 </p>
                 
                 {/* target */}
                 <p>
                     <span className={learnedClass}>{targetLang}: </span>
-                    {target}
+                    {translation}
                 </p>
             </div>
 
