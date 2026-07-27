@@ -12,10 +12,17 @@ export interface DictionaryItem extends TranslateResult {
     currentTranslationWordClass?: string,
 }
 
+
 interface DictionarySlice {
-    [dictionaryName: string]: { // sourceLang - targetLang OR custom
-        items: {
-            [sourceText: string]: DictionaryItem
+    settings: {
+        currentDictionary: string | null,
+    },
+    dictionaries: {
+        [id: string]: { // sourceLang/targetLang OR custom
+            items: {
+                [sourceText: string]: DictionaryItem
+            },
+            name: string
         }
     }
 }
@@ -27,7 +34,12 @@ interface AddItemPayload {
 }
 
 
-const initialState = {} as DictionarySlice;
+const initialState: DictionarySlice = {
+    settings:{
+        currentDictionary: null
+    },
+    dictionaries: {},
+};
 
 export const dictionarySlice = createSlice({
     name: "dictionarySlice",
@@ -41,7 +53,8 @@ export const dictionarySlice = createSlice({
                 sliceState[dictionaryName] = {
                     items: {
                         [item.sourceText]: item
-                    }
+                    },
+                    name: dictionaryName
                 }
             } else {
                 dictionary.items[item.sourceText] = item;
