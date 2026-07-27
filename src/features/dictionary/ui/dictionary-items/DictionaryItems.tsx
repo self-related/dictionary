@@ -1,27 +1,20 @@
-import { useState } from "react";
 import styles from "./DictionaryItems.module.css"
 import ItemWrap from "./ui/item-wrap/ItemWrap";
-import type { DictionaryItem } from "../../model/dictionarySlice";
-
-const testWords: DictionaryItem[] = [
-    {sourceText: "sourcesourcesourceso urcesourcesourcesourc esourcesourcesourcesource urcesourcesources ourcesourcesourcesour cesource urcesourcesourcesourcesourcesourcesourcesource urcesourcesourcesourcesourcesourcesourcesource urcesourcesourcesourcesourcesourcesourcesource", translation: "translation", sourceLang: "English", targetLang: "Spanish", learned: false},
-    {sourceText: "source1", translation: "translation", sourceLang: "English", targetLang: "Spanish", learned: true},
-    {sourceText: "source", translation: "translation", sourceLang: "English", targetLang: "Spanish", learned: false},
-    {sourceText: "source", translation: "translation", sourceLang: "English", targetLang: "Spanish", learned: false},
-    {sourceText: "source", translation: "translation", sourceLang: "English", targetLang: "Spanish", learned: false},
-    {sourceText: "source", translation: "translation", sourceLang: "English", targetLang: "Spanish", learned: false},
-    {sourceText: "source", translation: "translation", sourceLang: "English", targetLang: "Spanish", learned: false}
-];
+import { useAppSelector } from "../../../../app/model/store/hooks";
 
 export default function DictionaryWords() {
-    const [words] = useState<DictionaryItem[]>(testWords); // temp state
+    const { dictionaries, settings } = useAppSelector(state => state.dictionarySlice);
+
+    const currentDictionary = dictionaries[settings.currentDictionary]?.items ?? [];
+    const keys = Object.keys(dictionaries[settings.currentDictionary]?.items);
+
 
     return (
         <div className={styles.dictionaryWords}>
             {
-                (words.length === 0)
+                (keys?.length === 0)
                 ? <p className={styles.placeholder}>No words yet</p>
-                : words.map((wordProps, i) => <ItemWrap key={i} {...wordProps} />)
+                : keys?.map((key, i) => <ItemWrap key={i} {...currentDictionary[key]} />)
             }
         </div>
     );

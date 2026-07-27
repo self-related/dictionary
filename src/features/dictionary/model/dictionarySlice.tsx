@@ -12,7 +12,6 @@ export interface DictionaryItem extends TranslateResult {
     currentTranslationWordClass?: string,
 }
 
-
 interface DictionarySlice {
     settings: {
         currentDictionary: string | null,
@@ -27,7 +26,6 @@ interface DictionarySlice {
     }
 }
 
-
 interface AddItemPayload {
     dictionaryName: string,
     item: DictionaryItem
@@ -36,10 +34,20 @@ interface AddItemPayload {
 
 const initialState: DictionarySlice = {
     settings:{
-        currentDictionary: null
+        currentDictionary: "en/es"
     },
-    dictionaries: {},
+    dictionaries: {
+        "en/es": {
+            items:  {
+                "source1": {sourceText: "source1", translation: "translation", sourceLang: "English", targetLang: "Spanish", learned: true},
+                "source": {sourceText: "source", translation: "translation", sourceLang: "English", targetLang: "Spanish", learned: false},
+                "source2": {sourceText: "source2", translation: "translation", sourceLang: "English", targetLang: "Spanish", learned: false},
+            },
+            name: "English - Spanish"
+        }
+    },
 };
+
 
 export const dictionarySlice = createSlice({
     name: "dictionarySlice",
