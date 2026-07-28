@@ -27,17 +27,17 @@ interface DictionarySlice {
 }
 
 interface AddItemPayload {
-    dictionaryName: string,
+    dictionaryId: string,
     item: DictionaryItem
 }
 
 
 const initialState: DictionarySlice = {
     settings:{
-        currentDictionary: "en/es"
+        currentDictionary: "en;es"
     },
     dictionaries: {
-        "en/es": {
+        "en;es": {
             items:  {
                 "source1": {sourceText: "source1", translation: "translation", sourceLang: "English", targetLang: "Spanish", learned: true},
                 "source": {sourceText: "source", translation: "translation", sourceLang: "English", targetLang: "Spanish", learned: false},
@@ -54,15 +54,15 @@ export const dictionarySlice = createSlice({
     initialState,
     reducers: {
         addItem: (sliceState: DictionarySlice, action: PayloadAction<AddItemPayload>) => {
-            const { item, dictionaryName } = action.payload; 
-            const dictionary = sliceState[action.payload.dictionaryName];
+            const { item, dictionaryId } = action.payload; 
+            const dictionary = sliceState.dictionaries[action.payload.dictionaryId];
 
             if (!dictionary) {
-                sliceState[dictionaryName] = {
+                sliceState.dictionaries[dictionaryId] = {
                     items: {
                         [item.sourceText]: item
                     },
-                    name: dictionaryName
+                    name: dictionaryId
                 }
             } else {
                 dictionary.items[item.sourceText] = item;
