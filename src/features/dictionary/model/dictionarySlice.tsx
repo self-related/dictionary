@@ -67,6 +67,8 @@ export const dictionarySlice = createSlice({
             } else {
                 dictionary.items[item.sourceText] = item;
             }
+
+            sliceState.settings.currentDictionaryId = dictionaryId; // switch to edited dictionary
         },
         setCurrentDictionary: (sliceState: DictionarySlice, action: PayloadAction<string>) => {
             const dictionaryId = action.payload;
