@@ -12,7 +12,7 @@ export interface DictionaryItem extends TranslateResult {
 
 interface DictionarySlice {
     settings: {
-        currentDictionaryId: string | null,
+        currentDictionaryId: string,
     },
     dictionaries: {
         [id: string]: { // sourceLang/targetLang OR custom
