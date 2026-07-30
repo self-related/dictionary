@@ -67,9 +67,20 @@ export const dictionarySlice = createSlice({
             } else {
                 dictionary.items[item.sourceText] = item;
             }
+        },
+        setCurrentDictionary: (sliceState: DictionarySlice, action: PayloadAction<string>) => {
+            const dictionaryId = action.payload;
+
+            if (!dictionaryId) return;
+
+            if (sliceState.dictionaries[dictionaryId]) {
+                sliceState.settings.currentDictionary = dictionaryId;
+            } else {
+                console.error(`dictionaryId <${dictionaryId}> does not exist`);
+            }
         }
     }
 });
 
 
-export const { addItem } = dictionarySlice.actions;
+export const { addItem, setCurrentDictionary } = dictionarySlice.actions;
