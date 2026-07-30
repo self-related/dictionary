@@ -3,8 +3,6 @@ import type { TranslateResult } from "../../translate/api/types";
 
 
 export interface DictionaryItem extends TranslateResult {
-    sourceLang: string,
-    targetLang: string,
     sourceText: string,
     learned: boolean,
     
@@ -39,9 +37,9 @@ const initialState: DictionarySlice = {
     dictionaries: {
         "en;es": {
             items:  {
-                "source1": {sourceText: "source1", translation: "translation", sourceLang: "English", targetLang: "Spanish", learned: true},
-                "source": {sourceText: "source", translation: "translation", sourceLang: "English", targetLang: "Spanish", learned: false},
-                "source2": {sourceText: "source2", translation: "translation", sourceLang: "English", targetLang: "Spanish", learned: false},
+                "source1": {sourceText: "source1", translation: "translation", learned: true},
+                "source": {sourceText: "source", translation: "translation", learned: false},
+                "source2": {sourceText: "source2", translation: "translation", learned: false},
             },
             name: "English - Spanish"
         }

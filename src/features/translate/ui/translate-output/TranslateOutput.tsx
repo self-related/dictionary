@@ -26,8 +26,6 @@ export default function TranslateOutput({ className }: TranslateOutputProps) {
         dispatch(addItem({
             dictionaryId: `${sourceLang};${targetLang}`,
             item: {
-                sourceLang,
-                targetLang,
                 sourceText,
                 translation: customTranslation ?? lastTranslateResult?.translation,
                 learned: false,

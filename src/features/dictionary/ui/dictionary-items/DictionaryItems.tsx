@@ -7,14 +7,23 @@ export default function DictionaryWords() {
 
     const currentDictionary = dictionaries[settings.currentDictionary]?.items ?? [];
     const keys = Object.keys(dictionaries[settings.currentDictionary]?.items);
+    const [sourceLangId, targetLangId] = settings.currentDictionary.split(";");
 
 
     return (
         <div className={styles.dictionaryWords}>
             {
                 (keys?.length === 0)
-                ? <p className={styles.placeholder}>No words yet</p>
-                : keys?.map((key, i) => <ItemWrap key={i} {...currentDictionary[key]} />)
+                ?   <p className={styles.placeholder}>
+                        No words yet
+                    </p>
+                : keys?.map((key, i) => (
+                    <ItemWrap key={i} 
+                        sourceLang={sourceLangId ?? "Original"}
+                        targetLang={targetLangId ?? "Translation"}
+                        {...currentDictionary[key]}
+                    />
+                ))
             }
         </div>
     );
