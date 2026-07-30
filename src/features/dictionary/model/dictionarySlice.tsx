@@ -1,5 +1,6 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { TranslateResult } from "../../translate/api/types";
+import { getDictionaryName } from "../../../shared/config/languageNames";
 
 
 export interface DictionaryItem extends TranslateResult {
@@ -54,13 +55,14 @@ export const dictionarySlice = createSlice({
         addItem: (sliceState: DictionarySlice, action: PayloadAction<AddItemPayload>) => {
             const { item, dictionaryId } = action.payload; 
             const dictionary = sliceState.dictionaries[action.payload.dictionaryId];
+            const dictionaryName = getDictionaryName(dictionaryId) ?? dictionaryId;
 
             if (!dictionary) {
                 sliceState.dictionaries[dictionaryId] = {
                     items: {
                         [item.sourceText]: item
                     },
-                    name: dictionaryId
+                    name: dictionaryName
                 }
             } else {
                 dictionary.items[item.sourceText] = item;
