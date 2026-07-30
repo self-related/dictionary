@@ -12,7 +12,7 @@ export interface DictionaryItem extends TranslateResult {
 
 interface DictionarySlice {
     settings: {
-        currentDictionary: string | null,
+        currentDictionaryId: string | null,
     },
     dictionaries: {
         [id: string]: { // sourceLang/targetLang OR custom
@@ -32,7 +32,7 @@ interface AddItemPayload {
 
 const initialState: DictionarySlice = {
     settings:{
-        currentDictionary: "en;es"
+        currentDictionaryId: "en;es"
     },
     dictionaries: {
         "en;es": {
@@ -72,7 +72,7 @@ export const dictionarySlice = createSlice({
             if (!dictionaryId) return;
 
             if (sliceState.dictionaries[dictionaryId]) {
-                sliceState.settings.currentDictionary = dictionaryId;
+                sliceState.settings.currentDictionaryId = dictionaryId;
             } else {
                 console.error(`dictionaryId <${dictionaryId}> does not exist`);
             }

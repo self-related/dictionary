@@ -5,9 +5,9 @@ import { useAppSelector } from "../../../../app/model/store/hooks";
 export default function DictionaryWords() {
     const { dictionaries, settings } = useAppSelector(state => state.dictionarySlice);
 
-    const currentDictionary = dictionaries[settings.currentDictionary]?.items ?? [];
-    const keys = Object.keys(dictionaries[settings.currentDictionary]?.items);
-    const [sourceLangId, targetLangId] = settings.currentDictionary.split(";");
+    const currentDictionary = dictionaries[settings.currentDictionaryId]?.items ?? [];
+    const keys = Object.keys(dictionaries[settings.currentDictionaryId]?.items);
+    const [sourceLangId, targetLangId] = settings.currentDictionaryId.split(";");
 
 
     return (
