@@ -1,6 +1,6 @@
 import { useAppDispatch } from "../../../../../../app/model/store/hooks";
 import type { TranslationVerbose } from "../../../../../translate/api/types";
-import { removeItem } from "../../../../model/dictionarySlice";
+import { removeItem, switchLearned } from "../../../../model/dictionarySlice";
 import styles from "./ItemWrap.module.css"
 
 
@@ -19,7 +19,9 @@ interface WordItemProps {
 export default function WordItem({
     dictionaryId, sourceText, sourceLang, targetLang, translation, learned
 }: WordItemProps) {
-    const learnedCSS = (learned) ? styles.learned : styles.notLearned;
+    const learnedCSS = (learned) ? styles.textGreen : styles.textRed;
+    const checkboxCSS = (learned) ? styles.textGreen : styles.textGray;
+
     const dispatch = useAppDispatch();
 
     return (
@@ -45,7 +47,9 @@ export default function WordItem({
                 <button className={styles.closeBtn} onClick={() => dispatch(removeItem({sourceText, dictionaryId}))}>
                     X
                 </button>
-                <button className={styles.learnedBtn}>🗸</button>
+                <button className={`${styles.learnedBtn} ${checkboxCSS}`} onClick={() => dispatch(switchLearned({sourceText, dictionaryId}))}>
+                    🗸
+                </button>
                 <button className={styles.optionsBtn}>...</button>
 
             </div>

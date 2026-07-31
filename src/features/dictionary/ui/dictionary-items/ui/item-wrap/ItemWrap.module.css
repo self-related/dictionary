@@ -25,12 +25,17 @@
     }
 }
 
-.learned {
-    color: #03bb03;
+.textGreen {
+    color: #03bb03 !important;
 }
 
-.notLearned {
-    color: #fc4566;
+.textRed {
+    color: #fc4566 !important;
+    text-shadow: inherit;
+}
+
+.textGray {
+    color: grey !important;
     text-shadow: inherit;
 }
 

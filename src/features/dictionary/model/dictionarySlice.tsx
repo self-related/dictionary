@@ -82,6 +82,14 @@ export const dictionarySlice = createSlice({
                 sliceState.settings.currentDictionaryId = "";
             }
         },
+        switchLearned: (sliceState, action: PayloadAction<{sourceText: string, dictionaryId: string}>) => {
+            const { sourceText, dictionaryId } = action.payload;
+            const item = sliceState.dictionaries[dictionaryId].items[sourceText];
+
+            if (item) {
+                item.learned = !item.learned;
+            }
+        },
         setCurrentDictionary: (sliceState: DictionarySlice, action: PayloadAction<string>) => {
             const dictionaryId = action.payload;
 
@@ -97,4 +105,4 @@ export const dictionarySlice = createSlice({
 });
 
 
-export const { addItem, setCurrentDictionary, removeItem } = dictionarySlice.actions;
+export const { addItem, setCurrentDictionary, removeItem, switchLearned } = dictionarySlice.actions;
