@@ -18,7 +18,6 @@ export default function DictionaryPanel() {
         <div className={styles.dictionaryPanel}>
             
             <Select onChange={handleDictionaryChange} id="dictionary-select" value={settings.currentDictionaryId} className={styles.dictionarySwitch}>
-                <option value=""></option>
                 {
                     dictionaryIds.map((id, i) => (
                         <option value={id} key={i}>

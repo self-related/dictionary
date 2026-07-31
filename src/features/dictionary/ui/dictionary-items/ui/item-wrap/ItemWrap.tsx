@@ -1,4 +1,6 @@
+import { useAppDispatch } from "../../../../../../app/model/store/hooks";
 import type { TranslationVerbose } from "../../../../../translate/api/types";
+import { removeItem } from "../../../../model/dictionarySlice";
 import styles from "./ItemWrap.module.css"
 
 
@@ -7,6 +9,7 @@ interface WordItemProps {
     translation: string,
     sourceLang: string,
     targetLang: string,
+    dictionaryId: string,
     
     moreTranslations?: TranslationVerbose[],
     learned?: boolean,
@@ -14,9 +17,10 @@ interface WordItemProps {
 
 
 export default function WordItem({
-    sourceText, sourceLang, targetLang, translation, learned
+    dictionaryId, sourceText, sourceLang, targetLang, translation, learned
 }: WordItemProps) {
-    const learnedClass = (learned) ? styles.learned : styles.notLearned;
+    const learnedCSS = (learned) ? styles.learned : styles.notLearned;
+    const dispatch = useAppDispatch();
 
     return (
         <div className={styles.wordItem}>
@@ -24,13 +28,13 @@ export default function WordItem({
             <div className={styles.textWrap}>
                 {/* source */}
                 <p>
-                    <span className={learnedClass}>{sourceLang}: </span>
+                    <span className={learnedCSS}>{sourceLang}: </span>
                     {sourceText}
                 </p>
                 
                 {/* target */}
                 <p>
-                    <span className={learnedClass}>{targetLang}: </span>
+                    <span className={learnedCSS}>{targetLang}: </span>
                     {translation}
                 </p>
             </div>
@@ -38,7 +42,9 @@ export default function WordItem({
 
             {/* buttons */}
             <div className={styles.buttonsWrap}>
-                <button className={styles.closeBtn}>X</button>
+                <button className={styles.closeBtn} onClick={() => dispatch(removeItem({sourceText, dictionaryId}))}>
+                    X
+                </button>
                 <button className={styles.learnedBtn}>🗸</button>
                 <button className={styles.optionsBtn}>...</button>
 

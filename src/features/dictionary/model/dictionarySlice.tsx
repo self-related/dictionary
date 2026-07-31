@@ -36,8 +36,9 @@ const initialState: DictionarySlice = {
         currentDictionaryId: "en;es"
     },
     dictionaries: {
+        "": { items: {}, name: "" }, // empty placeholder
         "en;es": {
-            items:  {
+            items:  {// TODO: add id for sorting
                 "source1": {sourceText: "source1", translation: "translation", learned: true},
                 "source": {sourceText: "source", translation: "translation", learned: false},
                 "source2": {sourceText: "source2", translation: "translation", learned: false},
@@ -70,6 +71,17 @@ export const dictionarySlice = createSlice({
 
             sliceState.settings.currentDictionaryId = dictionaryId; // switch to edited dictionary
         },
+        removeItem: (sliceState, action: PayloadAction<{sourceText: string, dictionaryId: string}>) => {
+            const { sourceText, dictionaryId } = action.payload;
+            delete sliceState.dictionaries[dictionaryId]?.items[sourceText];
+
+            const isEmpty = Object.keys(sliceState.dictionaries[dictionaryId]?.items).length === 0;
+
+            if (dictionaryId !== "" && isEmpty) {
+                delete sliceState.dictionaries[dictionaryId];
+                sliceState.settings.currentDictionaryId = "";
+            }
+        },
         setCurrentDictionary: (sliceState: DictionarySlice, action: PayloadAction<string>) => {
             const dictionaryId = action.payload;
 
@@ -85,4 +97,4 @@ export const dictionarySlice = createSlice({
 });
 
 
-export const { addItem, setCurrentDictionary } = dictionarySlice.actions;
+export const { addItem, setCurrentDictionary, removeItem } = dictionarySlice.actions;

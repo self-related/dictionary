@@ -22,6 +22,7 @@ export default function DictionaryWords() {
                     <ItemWrap key={i} 
                         sourceLang={sourceLang ?? "Original"}
                         targetLang={targetLang ?? "Translation"}
+                        dictionaryId={settings.currentDictionaryId}
                         {...currentDictionary[key]}
                     />
                 ))
