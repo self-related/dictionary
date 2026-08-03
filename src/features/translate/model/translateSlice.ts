@@ -36,7 +36,7 @@ export const translateSlice = createSlice({
         setSourceText: (sliceState, action: PayloadAction<string>) => { 
             sliceState.translateQueryPayload.sourceText = action.payload;
         },
-        setCustomTranslation: (sliceState, action: PayloadAction<string>) => {
+        setCustomTranslation: (sliceState, action: PayloadAction<string | null>) => {
             sliceState.customTranslation = action.payload;
         },
         switchLangs: (sliceState) => {

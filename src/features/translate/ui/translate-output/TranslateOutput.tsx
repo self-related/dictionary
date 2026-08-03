@@ -22,12 +22,13 @@ export default function TranslateOutput({ className }: TranslateOutputProps) {
         if (!customTranslation && !lastTranslateResult) {
             return;
         }
+        const translation = customTranslation ?? lastTranslateResult!.translation; // both are never null simultaniously
         
         dispatch(addItem({
             dictionaryId: `${sourceLang};${targetLang}`,
             item: {
                 sourceText,
-                translation: customTranslation ?? lastTranslateResult?.translation,
+                translation,
                 learned: false,
                 moreTranslations: lastTranslateResult?.moreTranslations
             }
