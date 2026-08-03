@@ -6,24 +6,23 @@ import { getLanguageNamesFromDictionaryId } from "../../../../shared/config/lang
 export default function DictionaryWords() {
     const { dictionaries, settings } = useAppSelector(state => state.dictionarySlice);
 
-    const currentDictionary = dictionaries[settings.currentDictionaryId]?.items ?? [];
-    const keys = Object.keys(dictionaries[settings.currentDictionaryId]?.items);
+    const items = dictionaries[settings.currentDictionaryId]?.items ?? [];
     const [sourceLang, targetLang] = getLanguageNamesFromDictionaryId(settings.currentDictionaryId);
 
 
     return (
         <div className={styles.dictionaryWords}>
             {
-                (keys?.length === 0)
+                (items?.length === 0)
                 ?   <p className={styles.placeholder}>
                         No words yet
                     </p>
-                : keys?.map((key, i) => (
+                : items?.map((item, i) => (
                     <ItemWrap key={i} 
                         sourceLang={sourceLang ?? "Original"}
                         targetLang={targetLang ?? "Translation"}
                         dictionaryId={settings.currentDictionaryId}
-                        {...currentDictionary[key]}
+                        {...item}
                     />
                 ))
             }

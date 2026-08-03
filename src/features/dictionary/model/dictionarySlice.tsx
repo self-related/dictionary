@@ -17,9 +17,7 @@ interface DictionarySlice {
     },
     dictionaries: {
         [id: string]: { // sourceLang/targetLang OR custom
-            items: {
-                [sourceText: string]: DictionaryItem
-            },
+            items: DictionaryItem[],
             name: string
         }
     }
@@ -36,13 +34,13 @@ const initialState: DictionarySlice = {
         currentDictionaryId: "en;es"
     },
     dictionaries: {
-        "": { items: {}, name: "" }, // empty placeholder
+        "": { items: [], name: "" }, // empty placeholder
         "en;es": {
-            items:  {// TODO: add id for sorting
-                "source1": {sourceText: "source1", translation: "translation", learned: true},
-                "source": {sourceText: "source", translation: "translation", learned: false},
-                "source2": {sourceText: "source2", translation: "translation", learned: false},
-            },
+            items:  [
+                {sourceText: "source1", translation: "translation", learned: true},
+                {sourceText: "source", translation: "translation", learned: false},
+                {sourceText: "source2", translation: "translation", learned: false},
+            ],
             name: "English - Spanish"
         }
     },
@@ -60,22 +58,21 @@ export const dictionarySlice = createSlice({
 
             if (!dictionary) {
                 sliceState.dictionaries[dictionaryId] = {
-                    items: {
-                        [item.sourceText]: item
-                    },
+                    items: [item],
                     name: dictionaryName
                 }
             } else {
-                dictionary.items[item.sourceText] = item;
+                dictionary.items.push(item);
             }
 
             sliceState.settings.currentDictionaryId = dictionaryId; // switch to edited dictionary
         },
         removeItem: (sliceState, action: PayloadAction<{sourceText: string, dictionaryId: string}>) => {
             const { sourceText, dictionaryId } = action.payload;
-            delete sliceState.dictionaries[dictionaryId]?.items[sourceText];
+            const dictionary = sliceState.dictionaries[dictionaryId];
+            dictionary.items = dictionary.items.filter((item) => item.sourceText !== sourceText);
 
-            const isEmpty = Object.keys(sliceState.dictionaries[dictionaryId]?.items).length === 0;
+            const isEmpty = dictionary.items.length === 0;
 
             if (dictionaryId !== "" && isEmpty) {
                 delete sliceState.dictionaries[dictionaryId];
@@ -84,7 +81,7 @@ export const dictionarySlice = createSlice({
         },
         switchLearned: (sliceState, action: PayloadAction<{sourceText: string, dictionaryId: string}>) => {
             const { sourceText, dictionaryId } = action.payload;
-            const item = sliceState.dictionaries[dictionaryId].items[sourceText];
+            const item = sliceState.dictionaries[dictionaryId].items.find(item => item.sourceText === sourceText);
 
             if (item) {
                 item.learned = !item.learned;
