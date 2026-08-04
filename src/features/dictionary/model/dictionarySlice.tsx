@@ -1,6 +1,7 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { TranslateResult } from "../../translate/api/types";
 import { getDictionaryName } from "../../../shared/config/languageNames";
+import type { RootState } from "../../../app/model/store/store";
 
 
 export interface DictionaryItem extends TranslateResult {
@@ -103,3 +104,6 @@ export const dictionarySlice = createSlice({
 
 
 export const { addItem, setCurrentDictionary, removeItem, switchLearned } = dictionarySlice.actions;
+
+// selectors
+export const selectDictionaryItemsReversed = (dictionaryId: string) => (rootState: RootState) => rootState.dictionarySlice.dictionaries[dictionaryId]?.items.slice().reverse();

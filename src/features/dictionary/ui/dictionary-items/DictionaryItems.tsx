@@ -2,12 +2,13 @@ import styles from "./DictionaryItems.module.css"
 import ItemWrap from "./ui/item-wrap/ItemWrap";
 import { useAppSelector } from "../../../../app/model/store/hooks";
 import { getLanguageNamesFromDictionaryId } from "../../../../shared/config/languageNames";
+import { selectDictionaryItemsReversed } from "../../model/dictionarySlice";
 
 export default function DictionaryWords() {
-    const { dictionaries, settings } = useAppSelector(state => state.dictionarySlice);
+    const { currentDictionaryId } = useAppSelector(state => state.dictionarySlice.settings);
 
-    const items = dictionaries[settings.currentDictionaryId]?.items ?? [];
-    const [sourceLang, targetLang] = getLanguageNamesFromDictionaryId(settings.currentDictionaryId);
+    const items = useAppSelector(selectDictionaryItemsReversed(currentDictionaryId));
+    const [sourceLang, targetLang] = getLanguageNamesFromDictionaryId(currentDictionaryId);
 
 
     return (
@@ -21,7 +22,7 @@ export default function DictionaryWords() {
                     <ItemWrap key={i} 
                         sourceLang={sourceLang ?? "Original"}
                         targetLang={targetLang ?? "Translation"}
-                        dictionaryId={settings.currentDictionaryId}
+                        dictionaryId={currentDictionaryId}
                         {...item}
                     />
                 ))
