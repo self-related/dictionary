@@ -56,11 +56,17 @@ export const dictionarySlice = createSlice({
             const { item, dictionaryId } = action.payload; 
             const dictionary = sliceState.dictionaries[action.payload.dictionaryId];
             const dictionaryName = getDictionaryName(dictionaryId) ?? dictionaryId;
+            const existingItemIndex = sliceState.dictionaries[dictionaryId]?.items.findIndex(thisItem => thisItem.sourceText === item.sourceText);
 
             if (!dictionary) {
                 sliceState.dictionaries[dictionaryId] = {
                     items: [item],
                     name: dictionaryName
+                }
+            } else if (existingItemIndex != -1) {
+                const confirmedReplace = window.confirm("Replace existing item?");
+                if (confirmedReplace) {
+                    dictionary.items[existingItemIndex] = item;
                 }
             } else {
                 dictionary.items.push(item);
