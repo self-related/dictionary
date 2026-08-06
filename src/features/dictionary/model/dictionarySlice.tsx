@@ -1,7 +1,6 @@
-import { createSlice, isAnyOf, type PayloadAction } from "@reduxjs/toolkit";
+import { createSelector, createSlice, isAnyOf, type PayloadAction } from "@reduxjs/toolkit";
 import type { TranslateResult } from "../../translate/api/types";
 import { getDictionaryName } from "../../../shared/config/languageNames";
-import type { RootState } from "../../../app/model/store/store";
 import { exportToLocalStorage, importFromLocalStore } from "../../../shared/model/localStorage";
 
 
@@ -119,6 +118,9 @@ export const dictionarySlice = createSlice({
                 exportToLocalStorage(dictionarySlice.name, state);
             } 
         )
+    },
+    selectors: {
+       selectDictionaryItems: (sliceState, dictionaryId: string) => sliceState.dictionaries[dictionaryId].items,
     }
 });
 
@@ -126,4 +128,4 @@ export const dictionarySlice = createSlice({
 export const { addItem, setCurrentDictionary, removeItem, switchLearned } = dictionarySlice.actions;
 
 // selectors
-export const selectDictionaryItemsReversed = (dictionaryId: string) => (rootState: RootState) => rootState.dictionarySlice.dictionaries[dictionaryId]?.items.slice().reverse();
+export const selectDictionaryItemsReversed = createSelector(dictionarySlice.selectors.selectDictionaryItems, items => items.slice().reverse());

@@ -7,7 +7,7 @@ import { selectDictionaryItemsReversed } from "../../model/dictionarySlice";
 export default function DictionaryWords() {
     const { currentDictionaryId } = useAppSelector(state => state.dictionarySlice.settings);
 
-    const items = useAppSelector(selectDictionaryItemsReversed(currentDictionaryId));
+    const items = useAppSelector(state => selectDictionaryItemsReversed(state, currentDictionaryId));
     const [sourceLang, targetLang] = getLanguageNamesFromDictionaryId(currentDictionaryId);
 
 
