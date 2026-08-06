@@ -39,12 +39,11 @@ const initialState: DictionarySlice = savedState ?? {
         currentDictionaryId: "en;es"
     },
     dictionaries: {
-        "": { items: [], name: "" }, // empty placeholder
+        "": { items: [], name: "<not selected>" }, // empty placeholder
         "en;es": {
             items:  [
-                {sourceText: "source1", translation: "translation", learned: true},
-                {sourceText: "source", translation: "translation", learned: false},
-                {sourceText: "source2", translation: "translation", learned: false},
+                {sourceText: "learned", translation: "aprendió", learned: true},
+                {sourceText: "not learned", translation: "no aprendido", learned: false},
             ],
             name: "English - Spanish"
         }
