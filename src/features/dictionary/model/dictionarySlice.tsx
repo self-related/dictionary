@@ -1,7 +1,8 @@
-import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, isAnyOf, type PayloadAction } from "@reduxjs/toolkit";
 import type { TranslateResult } from "../../translate/api/types";
 import { getDictionaryName } from "../../../shared/config/languageNames";
 import type { RootState } from "../../../app/model/store/store";
+import { exportToLocalStorage, importFromLocalStore } from "../../../shared/model/localStorage";
 
 
 export interface DictionaryItem extends TranslateResult {
@@ -30,7 +31,10 @@ interface AddItemPayload {
 }
 
 
-const initialState: DictionarySlice = {
+const sliceName = "dictionarySlice";
+const savedState = importFromLocalStore<DictionarySlice>(sliceName);
+
+const initialState: DictionarySlice = savedState ?? {
     settings:{
         currentDictionaryId: "en;es"
     },
@@ -49,7 +53,7 @@ const initialState: DictionarySlice = {
 
 
 export const dictionarySlice = createSlice({
-    name: "dictionarySlice",
+    name: sliceName,
     initialState,
     reducers: {
         addItem: (sliceState: DictionarySlice, action: PayloadAction<AddItemPayload>) => {
@@ -105,6 +109,17 @@ export const dictionarySlice = createSlice({
                 console.error(`dictionaryId <${dictionaryId}> does not exist`);
             }
         }
+    },
+    extraReducers: builder => {
+        const actions = Object.values(dictionarySlice.actions); // get all actions from this slice
+
+        // save state in local storage on any action of this slice
+        builder.addMatcher(isAnyOf(...actions), 
+            (state, action) => {
+                console.log(`dictionatySlice action match: ${action.type}, saving to local storage`);
+                exportToLocalStorage(dictionarySlice.name, state);
+            } 
+        )
     }
 });
 
