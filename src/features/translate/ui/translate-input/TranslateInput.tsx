@@ -1,9 +1,9 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 import styles from "./TranslateInput.module.css";
 import Button from "../../../../shared/ui/button/Button";
 import { translateApiSlice, useLazyTranslateQuery } from "../../api/translateApiSlice";
 import { useAppDispatch, useAppSelector } from "../../../../app/model/store/hooks";
-import { selectTranslateQueryPayload, setSourceText } from "../../model/translateSlice";
+import { selectTranslateQueryPayload, setSourceText, switchAutoTranslate } from "../../model/translateSlice";
 
 
 interface TranslateInputProps {
@@ -16,7 +16,7 @@ export default function TranslateInput({ className = "" }: TranslateInputProps) 
     const translateQueryPayload = useAppSelector(selectTranslateQueryPayload);
     const sourceTextEmpty = useAppSelector(state => state.translateSlice.translateQueryPayload.sourceText) === "";
     
-    const [autoTranslate, setAutoTranslate] = useState<boolean>(true);
+    const autoTranslate = useAppSelector(state => state.translateSlice.autoTranslate);
 
     const [fetchTransltaion, { data }] = useLazyTranslateQuery();
     console.debug(`query: ${JSON.stringify(data)?.slice(0, 120)}...`);
@@ -27,14 +27,14 @@ export default function TranslateInput({ className = "" }: TranslateInputProps) 
             fetchTransltaion(translateQueryPayload);
         }
     }, [translateQueryPayload, fetchTransltaion]);
-    
+
 
     const handleAutoTranslationSwitch = () => {
-        const autoTranslateValue = !autoTranslate;
-        setAutoTranslate(autoTranslateValue);
+        const autoTranslateSwitched = !autoTranslate; // evaluate here because state not rendered yet
+        dispatch(switchAutoTranslate());
 
-        if (autoTranslateValue == false) {
-            dispatch(translateApiSlice.util.resetApiState()); // clear all cache if no auto-translation set
+        if (autoTranslateSwitched == false) {
+            dispatch(translateApiSlice.util.resetApiState()); // clear all cache *here* if no auto-translation set
         }
     };
 
@@ -43,7 +43,7 @@ export default function TranslateInput({ className = "" }: TranslateInputProps) 
         if (autoTranslate) {
             handleFetchTranslation();
         }
-    }, [autoTranslate, handleFetchTranslation]);
+    }, [autoTranslate, handleFetchTranslation, dispatch]);
 
 
     // css modifiers

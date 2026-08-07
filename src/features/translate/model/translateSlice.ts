@@ -7,6 +7,7 @@ import { exportToLocalStorage, importFromLocalStore } from "../../../shared/mode
 
 interface TranslateSlice {
     customTranslation: string | null,
+    autoTranslate: boolean,
     translateQueryPayload: TranslateQueryPayload,
 }
 
@@ -18,9 +19,10 @@ const initialState: TranslateSlice = {
         provider: "google",
         sourceLang: "en",
         targetLang: "es",
-        sourceText: ""
+        sourceText: "",
     },
     customTranslation: null,
+    autoTranslate: true
 };
 
 
@@ -42,6 +44,9 @@ export const translateSlice = createSlice({
         },
         setCustomTranslation: (sliceState, action: PayloadAction<string | null>) => {
             sliceState.customTranslation = action.payload;
+        },
+        switchAutoTranslate: (sliceState) => {
+            sliceState.autoTranslate = !sliceState.autoTranslate;
         },
         switchLangs: (sliceState) => {
             // swap languages
@@ -66,7 +71,8 @@ export const {
     setTargetLang, 
     setSourceText, 
     setCustomTranslation, 
-    switchLangs 
+    switchLangs,
+    switchAutoTranslate
 } = translateSlice.actions;
 
 export const selectTranslateQueryPayload = (state: RootState) => state.translateSlice.translateQueryPayload;
