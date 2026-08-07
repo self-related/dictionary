@@ -39,7 +39,7 @@ export default function TranslateOutput({ className }: TranslateOutputProps) {
     return (
         <div className={`${styles.translateOutput} shadowedText ${className}`}>
             <textarea 
-                value={customTranslation ?? lastTranslateResult?.translation} 
+                value={customTranslation ?? lastTranslateResult?.translation ?? ""} 
                 onInput={(ev) => dispatch(setCustomTranslation(ev.currentTarget.value))} 
             />
 
