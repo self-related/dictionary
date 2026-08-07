@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import styles from "./TranslateInput.module.css";
 import Button from "../../../../shared/ui/button/Button";
-import { useLazyTranslateQuery } from "../../api/translateApiSlice";
+import { translateApiSlice, useLazyTranslateQuery } from "../../api/translateApiSlice";
 import { useAppDispatch, useAppSelector } from "../../../../app/model/store/hooks";
 import { selectTranslateQueryPayload, setSourceText } from "../../model/translateSlice";
 
@@ -27,6 +27,16 @@ export default function TranslateInput({ className = "" }: TranslateInputProps) 
             fetchTransltaion(translateQueryPayload);
         }
     }, [translateQueryPayload, fetchTransltaion]);
+    
+
+    const handleAutoTranslationSwitch = () => {
+        const autoTranslateValue = !autoTranslate;
+        setAutoTranslate(autoTranslateValue);
+
+        if (autoTranslateValue == false) {
+            dispatch(translateApiSlice.util.resetApiState()); // clear all cache if no auto-translation set
+        }
+    };
 
 
     useEffect(() => {
@@ -64,7 +74,7 @@ export default function TranslateInput({ className = "" }: TranslateInputProps) 
                         id="autoTranslate" 
                         checked={autoTranslate}
                         type="checkbox"
-                        onChange={() => setAutoTranslate(value => !value)}
+                        onChange={() => handleAutoTranslationSwitch()}
                     />
                 </label>
 
