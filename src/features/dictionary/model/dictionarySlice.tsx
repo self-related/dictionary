@@ -33,7 +33,7 @@ interface AddItemPayload {
 const sliceName = "dictionarySlice";
 const savedState = importFromLocalStore<DictionarySlice>(sliceName);
 
-const initialState: DictionarySlice = savedState ?? {
+const initialState: DictionarySlice = {
     settings:{
         currentDictionaryId: "en;es"
     },
@@ -52,7 +52,7 @@ const initialState: DictionarySlice = savedState ?? {
 
 export const dictionarySlice = createSlice({
     name: sliceName,
-    initialState,
+    initialState: {...initialState, ...savedState},
     reducers: {
         addItem: (sliceState: DictionarySlice, action: PayloadAction<AddItemPayload>) => {
             const { item, dictionaryId } = action.payload; 

@@ -13,7 +13,7 @@ interface TranslateSlice {
 const sliceName = "translateSlice";
 const savedState = importFromLocalStore<TranslateSlice>(sliceName);
 
-const initialState: TranslateSlice = savedState ?? {
+const initialState: TranslateSlice = {
     translateQueryPayload: {
         provider: "google",
         sourceLang: "en",
@@ -26,7 +26,7 @@ const initialState: TranslateSlice = savedState ?? {
 
 export const translateSlice = createSlice({
     name: sliceName,
-    initialState,
+    initialState: {...initialState, ...savedState},
     reducers: {
         setProvider: (sliceState, action: PayloadAction<string>) => {
             sliceState.translateQueryPayload.provider = action.payload;
