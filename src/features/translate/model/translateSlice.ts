@@ -1,7 +1,8 @@
-import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, isAnyOf, type PayloadAction } from "@reduxjs/toolkit";
 import type { TranslateQueryPayload } from "../api/types";
 import type { RootState } from "../../../app/model/store/store";
 import { translateApiSlice } from "../api/translateApiSlice";
+import { exportToLocalStorage, importFromLocalStore } from "../../../shared/model/localStorage";
 
 
 interface TranslateSlice {
@@ -9,7 +10,10 @@ interface TranslateSlice {
     translateQueryPayload: TranslateQueryPayload,
 }
 
-const initialState: TranslateSlice = {
+const sliceName = "translateSlice";
+const savedState = importFromLocalStore<TranslateSlice>(sliceName);
+
+const initialState: TranslateSlice = savedState ?? {
     translateQueryPayload: {
         provider: "google",
         sourceLang: "en",
@@ -21,7 +25,7 @@ const initialState: TranslateSlice = {
 
 
 export const translateSlice = createSlice({
-    name: "translateSlice",
+    name: sliceName,
     initialState,
     reducers: {
         setProvider: (sliceState, action: PayloadAction<string>) => {
@@ -47,6 +51,10 @@ export const translateSlice = createSlice({
     extraReducers: builder => {
         builder.addMatcher(translateApiSlice.endpoints.translate.matchPending, (state) => {
             state.customTranslation = null;
+        });
+        const actions = Object.values(translateSlice.actions);
+        builder.addMatcher(isAnyOf(...actions), (state) => {
+            exportToLocalStorage(translateSlice.name, state);
         })
     }
 });
