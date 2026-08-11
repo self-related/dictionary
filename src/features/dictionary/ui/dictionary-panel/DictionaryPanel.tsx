@@ -15,6 +15,8 @@ export default function DictionaryPanel() {
         dispatch(setCurrentDictionary(event.currentTarget.value));
     };
 
+    const blurActive = useAppSelector(state => state.dictionarySlice.settings.blurTranslations);
+
     return (
         <div className={styles.dictionaryPanel}>
             
@@ -28,7 +30,10 @@ export default function DictionaryPanel() {
                 }
             </Select>
 
-            <Button onClick={() => dispatch(switchBlurTranslations())} >
+            <Button
+                active={blurActive}
+                onClick={() => dispatch(switchBlurTranslations())}
+            >
                 blur
             </Button>
 
