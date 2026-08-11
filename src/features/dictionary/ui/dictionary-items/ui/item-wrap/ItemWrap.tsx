@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useAppDispatch } from "../../../../../../app/model/store/hooks";
 import type { TranslationVerbose } from "../../../../../translate/api/types";
 import { removeItem, switchLearned } from "../../../../model/dictionarySlice";
@@ -13,14 +14,20 @@ interface WordItemProps {
     
     moreTranslations?: TranslationVerbose[],
     learned?: boolean,
+    blur?: boolean
 }
 
 
 export default function WordItem({
-    dictionaryId, sourceText, sourceLang, targetLang, translation, learned
+    dictionaryId, sourceText, sourceLang, targetLang, translation, learned, blur
 }: WordItemProps) {
+    const [blurDisabled] = useState(false);
+
+    // CSS modifiers
     const learnedCSS = (learned) ? styles.textGreen : styles.textRed;
     const checkboxCSS = (learned) ? styles.textGreen : styles.textGray;
+    const blurClass = (blur && !blurDisabled) ? styles.blur : '';
+    
 
     const dispatch = useAppDispatch();
 
@@ -34,10 +41,10 @@ export default function WordItem({
                     {sourceText}
                 </p>
                 
-                {/* target */}
+                {/* translation */}
                 <p>
                     <span className={learnedCSS}>{targetLang}: </span>
-                    {translation}
+                    <span className={blurClass}>{translation}</span>
                 </p>
             </div>
 

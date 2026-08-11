@@ -15,6 +15,7 @@ export interface DictionaryItem extends TranslateResult {
 interface DictionarySlice {
     settings: {
         currentDictionaryId: string,
+        blurTranslations: boolean
     },
     dictionaries: {
         [id: string]: { // sourceLang/targetLang OR custom
@@ -35,7 +36,8 @@ const savedState = importFromLocalStore<DictionarySlice>(sliceName);
 
 const initialState: DictionarySlice = {
     settings:{
-        currentDictionaryId: "en;es"
+        currentDictionaryId: "en;es",
+        blurTranslations: false
     },
     dictionaries: {
         "": { items: [], name: "<not selected>" }, // empty placeholder
@@ -106,6 +108,9 @@ export const dictionarySlice = createSlice({
             } else {
                 console.error(`dictionaryId <${dictionaryId}> does not exist`);
             }
+        },
+        switchBlurTranslations: (sliceState: DictionarySlice) => {
+            sliceState.settings.blurTranslations = !sliceState.settings.blurTranslations;
         }
     },
     extraReducers: builder => {
@@ -125,7 +130,7 @@ export const dictionarySlice = createSlice({
 });
 
 
-export const { addItem, setCurrentDictionary, removeItem, switchLearned } = dictionarySlice.actions;
+export const { addItem, setCurrentDictionary, removeItem, switchLearned, switchBlurTranslations } = dictionarySlice.actions;
 
 // selectors
 export const selectDictionaryItemsReversed = createSelector(dictionarySlice.selectors.selectDictionaryItems, items => items.slice().reverse());

@@ -9,7 +9,7 @@ export default function DictionaryWords() {
 
     const items = useAppSelector(state => selectDictionaryItemsReversed(state, currentDictionaryId));
     const [sourceLang, targetLang] = getLanguageNamesFromDictionaryId(currentDictionaryId);
-
+    const blurItems = useAppSelector(state => state.dictionarySlice.settings.blurTranslations);
 
     return (
         <div className={styles.dictionaryWords}>
@@ -23,6 +23,7 @@ export default function DictionaryWords() {
                         sourceLang={sourceLang ?? "Original"}
                         targetLang={targetLang ?? "Translation"}
                         dictionaryId={currentDictionaryId}
+                        blur={blurItems}
                         {...item}
                     />
                 ))

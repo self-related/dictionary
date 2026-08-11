@@ -1,6 +1,7 @@
 import { useAppDispatch, useAppSelector } from "../../../../app/model/store/hooks";
+import Button from "../../../../shared/ui/button/Button";
 import Select from "../../../../shared/ui/select/Select";
-import { setCurrentDictionary } from "../../model/dictionarySlice";
+import { setCurrentDictionary, switchBlurTranslations } from "../../model/dictionarySlice";
 import styles from "./DictionaryPanel.module.css";
 
 
@@ -26,6 +27,10 @@ export default function DictionaryPanel() {
                     ))
                 }
             </Select>
+
+            <Button onClick={() => dispatch(switchBlurTranslations())} >
+                blur
+            </Button>
 
         </div>
     );

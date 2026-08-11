@@ -39,6 +39,10 @@
     text-shadow: inherit;
 }
 
+.blur {
+    filter: blur(6px);
+}
+
 
 /* buttons */
 .buttonsWrap {
