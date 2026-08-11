@@ -28,3 +28,10 @@
 .grow {
     flex-grow: 1;
 }
+
+.active {
+    background-color: var(--hover-color);
+    &:hover {
+        background-color: color-mix(in srgb, var(--hover-color) 70%, black 30%);
+    }
+}
