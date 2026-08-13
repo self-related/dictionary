@@ -23,9 +23,16 @@ export default function WordItem({
 }: WordItemProps) {
     const [blurDisabled, setBlurDisabled] = useState(false);
 
+
+    const handleTranslationMouseDown = () => {
+        window.getSelection()?.empty(); // remove all text selection on mousedown
+    };
+
     const handleTranslationClick = () => {
+        if (window.getSelection()?.toString()) return; // if text was selected after mousedown - return
         setBlurDisabled(val => !val);
     };
+
 
     // CSS modifiers
     const learnedCSS = (learned) ? styles.textGreen : styles.textRed;
@@ -47,7 +54,11 @@ export default function WordItem({
                 {/* translation */}
                 <p>
                     <span className={learnedCSS}>{targetLang}: </span>
-                    <span onClick={handleTranslationClick} className={blurCSS}>
+                    <span 
+                        onClick={handleTranslationClick} 
+                        onMouseDown={handleTranslationMouseDown}
+                        className={blurCSS}
+                    >
                         {translation}
                     </span>
                 </p>
