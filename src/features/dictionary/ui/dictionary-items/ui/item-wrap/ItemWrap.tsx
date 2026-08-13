@@ -21,13 +21,16 @@ interface WordItemProps {
 export default function WordItem({
     dictionaryId, sourceText, sourceLang, targetLang, translation, learned, blur
 }: WordItemProps) {
-    const [blurDisabled] = useState(false);
+    const [blurDisabled, setBlurDisabled] = useState(false);
+
+    const handleTranslationClick = () => {
+        setBlurDisabled(val => !val);
+    };
 
     // CSS modifiers
     const learnedCSS = (learned) ? styles.textGreen : styles.textRed;
     const checkboxCSS = (learned) ? styles.textGreen : styles.textGray;
-    const blurClass = (blur && !blurDisabled) ? styles.blur : '';
-    
+    const blurCSS = (blur && !blurDisabled) ? `${styles.blur} ${styles.pointer}` : (blur) ? styles.pointer : '';
 
     const dispatch = useAppDispatch();
 
@@ -44,7 +47,9 @@ export default function WordItem({
                 {/* translation */}
                 <p>
                     <span className={learnedCSS}>{targetLang}: </span>
-                    <span className={blurClass}>{translation}</span>
+                    <span onClick={handleTranslationClick} className={blurCSS}>
+                        {translation}
+                    </span>
                 </p>
             </div>
 
