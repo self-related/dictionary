@@ -24,7 +24,6 @@ export default function WordItem({
     const [blurDisabled, setBlurDisabled] = useState(false);
 
     const handleTranslationClick = () => {
-        if (window.getSelection()?.toString()) return; // prevent blur set if text is selected
         setBlurDisabled(val => !val);
     };
 
