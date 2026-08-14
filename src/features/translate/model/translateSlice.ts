@@ -55,7 +55,7 @@ export const translateSlice = createSlice({
     },
     extraReducers: builder => {
         builder.addMatcher(translateApiSlice.endpoints.translate.matchPending, (state) => {
-            state.customTranslation = null;
+            state.customTranslation = null; // nullify customTranslation if data is fetching
         });
         const actions = Object.values(translateSlice.actions);
         builder.addMatcher(isAnyOf(...actions), (state) => {
