@@ -3,7 +3,7 @@ import styles from "./TranslateInput.module.css";
 import Button from "../../../../shared/ui/button/Button";
 import { translateApiSlice, useLazyTranslateQuery } from "../../api/translateApiSlice";
 import { useAppDispatch, useAppSelector } from "../../../../app/model/store/hooks";
-import { selectTranslateQueryPayload, setSourceText, switchAutoTranslate } from "../../model/translateSlice";
+import { selectTranslateQueryPayload, setCustomTranslation, setSourceText, switchAutoTranslate } from "../../model/translateSlice";
 
 
 interface TranslateInputProps {
@@ -44,6 +44,13 @@ export default function TranslateInput({ className = "" }: TranslateInputProps) 
             handleFetchTranslation();
         }
     }, [autoTranslate, handleFetchTranslation, dispatch]);
+
+    // copy fetch data to customTranslation when no auto-transaltion checked
+    useEffect(() => {
+        if (!autoTranslate && data) {
+            dispatch(setCustomTranslation(data.translation));
+        }
+    }, [data, autoTranslate, dispatch]);
 
 
     // css modifiers
