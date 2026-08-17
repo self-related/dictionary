@@ -21,10 +21,13 @@ export default function Layout({
     console.log(`color scheme: ${colorScheme}`);
 
     // css mod
-    const colorSchemeMod = (colorScheme === "dark") ? "darkTheme" : "lightTheme";
+    const colorSchemeCSS = 
+    colorScheme === "dark" ? "darkTheme" : 
+    colorScheme === "light" ? "lightTheme" : "";
+
 
     return (
-        <div className={`${styles.layout} ${accent} ${colorSchemeMod} ${className}`}>
+        <div className={`${styles.layout} ${accent} ${colorSchemeCSS} ${className}`}>
             {/* Navbar */}
             <nav className={styles.navbar}>
                 <p>Dictionary</p>
@@ -52,10 +55,16 @@ function ColorSchemeBtn({ colorScheme, onClick }: {
     colorScheme: string, 
     onClick?(): void
 }) {
+    const colorSchemeBtnIcon = 
+    colorScheme === "dark" ? "☽" : 
+    colorScheme === "light" ? "🌣" :
+    "☽/🌣";
+
+    const colorSchemeIsAutoCSS = colorScheme === "auto" ? styles.colorSchemeIsAutoBtnMod : "";
 
     return (
-        <Button onClick={onClick}>
-            {colorScheme === "dark" ? "☽" : "🌣"}
+        <Button onClick={onClick} className={`${styles.colorSchemeBtn} ${colorSchemeIsAutoCSS}`}>
+            {colorSchemeBtnIcon}
         </Button>
     );
 }

@@ -6,10 +6,9 @@ interface GlobalSettingsSlice {
 }
 
 const name = "globalSettingsSlice";
-const colorSchemeDetected = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 
 const initialState: GlobalSettingsSlice = {
-    colorScheme: colorSchemeDetected
+    colorScheme: "auto"
 }
 
 export const globalSettingsSlice = createSlice({
@@ -17,9 +16,11 @@ export const globalSettingsSlice = createSlice({
     initialState,
     reducers: {
         switchColorScheme(slice) {
+            // cycle between dark, light, auto
             switch (slice.colorScheme) {
-                case "dark": slice.colorScheme = "light"; break;
-                case "light": slice.colorScheme = "dark"; break;
+                case "dark" : slice.colorScheme = "light"; break;
+                case "light": slice.colorScheme = "auto"; break;
+                case "auto" : slice.colorScheme = "dark"; break;
             }
         }
     },

@@ -50,3 +50,12 @@
     display: flex;
     padding-top: 0.4rem;
 }
+
+.colorSchemeIsAutoBtnMod {
+    font-size: 0.85rem;
+}
+
+.colorSchemeBtn {
+    width: 3.3rem;
+    margin: 0.2rem 0 0.2rem 0;
+}
