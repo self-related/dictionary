@@ -1,19 +1,23 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, isAnyOf } from "@reduxjs/toolkit";
+import { exportToLocalStorage, importFromLocalStore } from "../../../shared/model/localStorage";
 
 
 interface GlobalSettingsSlice {
     colorScheme: string,
 }
 
-const name = "globalSettingsSlice";
 
+const sliceName = "globalSettingsSlice";
+
+const savedState = importFromLocalStore<GlobalSettingsSlice>(sliceName);
 const initialState: GlobalSettingsSlice = {
     colorScheme: "auto"
-}
+};
+
 
 export const globalSettingsSlice = createSlice({
-    name,
-    initialState,
+    name: sliceName,
+    initialState: { ...initialState, ...savedState },
     reducers: {
         switchColorScheme(slice) {
             // cycle between dark, light, auto
@@ -26,8 +30,13 @@ export const globalSettingsSlice = createSlice({
     },
     selectors: {
         selectColorScheme: slice => slice.colorScheme
+    },
+    extraReducers(builder) {
+        const actions = Object.values(globalSettingsSlice.actions);
+        builder.addMatcher(isAnyOf(...actions), slice => exportToLocalStorage(sliceName, slice));
     }
 });
+
 
 export const { switchColorScheme } = globalSettingsSlice.actions;
 export const { selectColorScheme } = globalSettingsSlice.selectors;
