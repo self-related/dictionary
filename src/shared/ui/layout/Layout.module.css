@@ -30,7 +30,7 @@
 }
 
 .navbar {
-    align-items: center;
+    align-items: stretch;
     background-color: var(--nav-color);
     display: flex;
     color: inherit;
