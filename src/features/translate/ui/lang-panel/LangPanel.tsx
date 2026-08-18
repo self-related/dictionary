@@ -46,6 +46,9 @@ export default function LangPanel({ className = "" }: LangPanelProps) {
     };
 
 
+    // CSS modifiers
+    const switchBtnDisabled= sourceLang === "auto";
+
     return (
         <div className={`${styles.langPanel} ${className}`}>
 
@@ -60,7 +63,7 @@ export default function LangPanel({ className = "" }: LangPanelProps) {
 
 
             {/* Switch button  */}
-            <Button transparent onClick={handleSwitchLangs}>&lt;-&gt;</Button>
+            <Button transparent onClick={handleSwitchLangs} disabled={switchBtnDisabled}>&lt;-&gt;</Button>
 
 
             {/* Target lang selector */}
