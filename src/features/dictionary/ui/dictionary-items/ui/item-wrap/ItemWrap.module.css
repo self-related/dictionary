@@ -41,6 +41,7 @@
 
 .blur {
     filter: blur(6px);
+    user-select: none;
 }
 
 .pointer {
