@@ -1,5 +1,5 @@
 import styles from "./DictionaryList.module.css"
-import Item from "./ui/item/Item";
+import Item from "./item/Item";
 import { useAppSelector } from "../../../../app/model/store/hooks";
 import { getLanguageNamesFromDictionaryId } from "../../../../shared/config/languageNames";
 import { selectDictionaryItemsReversed } from "../../model/dictionarySlice";

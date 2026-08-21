@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useAppDispatch } from "../../../../../../app/model/store/hooks";
-import type { TranslationVerbose } from "../../../../../translate/api/types";
-import { removeItem, switchLearned } from "../../../../model/dictionarySlice";
+import { useAppDispatch } from "../../../../../app/model/store/hooks";
+import type { TranslationVerbose } from "../../../../translate/api/types";
+import { removeItem, switchLearned } from "../../../model/dictionarySlice";
 import styles from "./Item.module.css"
 
 
