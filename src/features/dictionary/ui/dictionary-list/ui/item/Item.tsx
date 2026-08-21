@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useAppDispatch } from "../../../../../../app/model/store/hooks";
 import type { TranslationVerbose } from "../../../../../translate/api/types";
 import { removeItem, switchLearned } from "../../../../model/dictionarySlice";
-import styles from "./ItemWrap.module.css"
+import styles from "./Item.module.css"
 
 
 interface WordItemProps {
@@ -18,7 +18,7 @@ interface WordItemProps {
 }
 
 
-export default function WordItem({
+export default function Item({
     dictionaryId, sourceText, sourceLang, targetLang, translation, learned, blur
 }: WordItemProps) {
     const [blurDisabled, setBlurDisabled] = useState(false);
@@ -76,7 +76,6 @@ export default function WordItem({
                     🗸
                 </button>
                 <button className={styles.optionsBtn}>...</button>
-
             </div>
 
         </div>

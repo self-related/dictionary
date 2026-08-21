@@ -1,5 +1,5 @@
 import DictionaryPanel from "../../features/dictionary/ui/dictionary-panel/DictionaryPanel";
-import DictionaryItems from "../../features/dictionary/ui/dictionary-items/DictionaryItems";
+import DictionaryList from "../../features/dictionary/ui/dictionary-list/DictionaryList";
 import LangPanel from "../../features/translate/ui/lang-panel/LangPanel";
 import TranslateInput from "../../features/translate/ui/translate-input/TranslateInput";
 import MoreTranslations from "../../features/translate/ui/more-translations/MoreTranslations";
@@ -25,7 +25,7 @@ export default function HomePage() {
             <div className={styles.appSection}>
                 <h2>Learn</h2>
                 <DictionaryPanel />
-                <DictionaryItems />
+                <DictionaryList />
             </div>
         </div>
     );

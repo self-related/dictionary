@@ -1,10 +1,10 @@
-import styles from "./DictionaryItems.module.css"
-import ItemWrap from "./ui/item-wrap/ItemWrap";
+import styles from "./DictionaryList.module.css"
+import Item from "./ui/item/Item";
 import { useAppSelector } from "../../../../app/model/store/hooks";
 import { getLanguageNamesFromDictionaryId } from "../../../../shared/config/languageNames";
 import { selectDictionaryItemsReversed } from "../../model/dictionarySlice";
 
-export default function DictionaryWords() {
+export default function DictionaryList() {
     const { currentDictionaryId } = useAppSelector(state => state.dictionarySlice.settings);
 
     const items = useAppSelector(state => selectDictionaryItemsReversed(state, currentDictionaryId));
@@ -19,7 +19,7 @@ export default function DictionaryWords() {
                         No words yet
                     </p>
                 : items?.map((item, i) => (
-                    <ItemWrap key={i} 
+                    <Item key={i} 
                         sourceLang={sourceLang ?? "Original"}
                         targetLang={targetLang ?? "Translation"}
                         dictionaryId={currentDictionaryId}
