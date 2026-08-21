@@ -3,7 +3,7 @@ import type { TranslationVerbose } from "../../api/types";
 import { useSelectTranslateQueryLastResult } from "../../hooks/apiHooks";
 import { setCustomTranslation } from "../../model/translateSlice";
 import styles from "./MoreTranslations.module.css";
-import TranslationOption from "./ui/translation-option/TranslationOption";
+import TranslationOption from "./translation-option/TranslationOption";
 
 interface TranslationsByGroupMap {
     [group: string]: string[]
