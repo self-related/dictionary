@@ -12,7 +12,7 @@ export default function DictionaryList() {
     const blurItems = useAppSelector(state => state.dictionarySlice.settings.blurTranslations);
 
     return (
-        <div className={styles.dictionaryWords}>
+        <div className={styles.dictionaryList}>
             {
                 (items?.length === 0)
                 ?   <p className={styles.placeholder}>
