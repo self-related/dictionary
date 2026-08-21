@@ -24,12 +24,14 @@ export default function WordItem({
     const [blurDisabled, setBlurDisabled] = useState(false);
 
 
+    // [prevent blur on selection] - remove old selected text on mousedown
     const handleTranslationMouseDown = () => {
-        window.getSelection()?.empty(); // remove all text selection on mousedown
+        window.getSelection()?.empty();
     };
 
     const handleTranslationClick = () => {
-        if (window.getSelection()?.toString()) return; // if text was selected after mousedown - return
+        // [prevent blur on selection] - if text is still selected after mousedown (new selection started) - don't change blur
+        if (window.getSelection()?.toString()) return;
         setBlurDisabled(val => !val);
     };
 
