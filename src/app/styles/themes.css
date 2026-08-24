@@ -9,6 +9,8 @@ body {
     --background-color-2-hover: #707070;
     --background-color-3: #464648c4;
 
+    --hover-color-neutral-1: #7b7b7b;
+
 
     --button-background: #606060;
     --border-color: #808080;
@@ -23,6 +25,8 @@ body {
         --background-color-2: #e4ebf4;
         --background-color-2-hover: #d9e3ef;
         --background-color-3: #98b6db61;
+
+        --hover-color-neutral-1: #d3dfed;
 
 
         --button-background: #e4ebf4;
@@ -49,6 +53,8 @@ body {
     --background-color-2-hover: #707070;
     --background-color-3: #464648c4;
 
+    --hover-color-neutral-1: #7b7b7b;
+
 
     --button-background: #606060;
     --border-color: #808080;
@@ -69,6 +75,8 @@ body {
     --background-color-2: #e4ebf4;
     --background-color-2-hover: #d9e3ef;
     --background-color-3: #d4e1f4dd;
+
+    --hover-color-neutral-1: #d3dfed;
 
 
     --button-background: #e4ebf4;
