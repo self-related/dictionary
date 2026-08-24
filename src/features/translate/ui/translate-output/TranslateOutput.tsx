@@ -61,11 +61,14 @@ export default function TranslateOutput({ className }: TranslateOutputProps) {
 
             <div className={styles.buttonsWrap}>
                 {/* nullify custom translation */} 
-                <Button onClick={() => dispatch(setCustomTranslation(lastTranslateResult?.translation ?? null))}>
+                <Button 
+                    title="Reset default translation"
+                    onClick={() => dispatch(setCustomTranslation(lastTranslateResult?.translation ?? null))}
+                >
                     Reset
                 </Button>      
 
-                <Button onClick={addBtnClick}>
+                <Button onClick={addBtnClick} title="Add to dictionary">
                     Add -&gt;
                 </Button>  {/* add to dictionary */}
             </div>

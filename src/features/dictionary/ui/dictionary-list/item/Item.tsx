@@ -69,13 +69,28 @@ export default function Item({
 
             {/* buttons */}
             <div className={styles.buttonsWrap}>
-                <button className={styles.closeBtn} onClick={() => dispatch(removeItem({sourceText, dictionaryId}))}>
+                <button 
+                    title="Delete"
+                    onClick={() => dispatch(removeItem({sourceText, dictionaryId}))}
+                    className={styles.closeBtn} 
+                >
                     X
                 </button>
-                <button className={`${styles.learnedBtn} ${checkboxCSS}`} onClick={() => dispatch(switchLearned({sourceText, dictionaryId}))}>
+
+                <button 
+                    title={ learned ? "Mark as Not Learned" : "Mark as Learned"} 
+                    className={`${styles.learnedBtn} ${checkboxCSS}`} 
+                    onClick={() => dispatch(switchLearned({sourceText, dictionaryId}))}
+                >
                     🗸
                 </button>
-                <button className={styles.optionsBtn}>...</button>
+
+                <button
+                    title="More"
+                    className={styles.optionsBtn}
+                >
+                    ...
+                </button>
             </div>
 
         </div>

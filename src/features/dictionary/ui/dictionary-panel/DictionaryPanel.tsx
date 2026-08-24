@@ -32,6 +32,7 @@ export default function DictionaryPanel() {
 
             <Button
                 active={blurActive}
+                title="Blur all translations"
                 onClick={() => dispatch(switchBlurTranslations())}
             >
                 blur
