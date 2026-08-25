@@ -3,6 +3,8 @@ import Item from "./item/Item";
 import { useAppSelector } from "../../../../app/model/store/hooks";
 import { getLanguageNamesFromDictionaryId } from "../../../../shared/config/languageNames";
 import { selectDictionaryItemsReversed } from "../../model/dictionarySlice";
+import { Category } from "./category/Category";
+
 
 export default function DictionaryList() {
     const { currentDictionaryId } = useAppSelector(state => state.dictionarySlice.settings);
@@ -18,15 +20,21 @@ export default function DictionaryList() {
                 ?   <p className={styles.placeholder}>
                         No words yet
                     </p>
-                : items?.map((item, i) => (
-                    <Item key={i} 
-                        sourceLang={sourceLang ?? "Original"}
-                        targetLang={targetLang ?? "Translation"}
-                        dictionaryId={currentDictionaryId}
-                        blur={blurItems}
-                        {...item}
-                    />
-                ))
+                : 
+                    <Category name="Temp category" >
+                    {
+
+                        items?.map((item, i) => (
+                            <Item key={i} 
+                                sourceLang={sourceLang ?? "Original"}
+                                targetLang={targetLang ?? "Translation"}
+                                dictionaryId={currentDictionaryId}
+                                blur={blurItems}
+                                {...item}
+                            />
+                        ))
+                    }   
+                    </Category>
             }
         </div>
     );
