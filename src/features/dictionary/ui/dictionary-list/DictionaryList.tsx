@@ -8,34 +8,36 @@ import { Category } from "./category/Category";
 
 export default function DictionaryList() {
     const { currentDictionaryId } = useAppSelector(state => state.dictionarySlice.settings);
-
     const items = useAppSelector(state => selectDictionaryItemsReversed(state, currentDictionaryId));
     const [sourceLang, targetLang] = getLanguageNamesFromDictionaryId(currentDictionaryId);
     const blurItems = useAppSelector(state => state.dictionarySlice.settings.blurTranslations);
 
+    // Return on empty items
+    if (items.length === 0) {
+        return (
+           <div className={ styles.dictionaryList }>
+                <p className={ styles.placeholder }>
+                    No words yet
+                </p>
+           </div> 
+        );
+    }
+
     return (
         <div className={styles.dictionaryList}>
+            <Category name="Temp category" >
             {
-                (items?.length === 0)
-                ?   <p className={styles.placeholder}>
-                        No words yet
-                    </p>
-                : 
-                    <Category name="Temp category" >
-                    {
-
-                        items?.map((item, i) => (
-                            <Item key={i} 
-                                sourceLang={sourceLang ?? "Original"}
-                                targetLang={targetLang ?? "Translation"}
-                                dictionaryId={currentDictionaryId}
-                                blur={blurItems}
-                                {...item}
-                            />
-                        ))
-                    }   
-                    </Category>
-            }
+                items?.map((item, i) => (
+                    <Item key={i} 
+                        sourceLang={sourceLang ?? "Original"}
+                        targetLang={targetLang ?? "Translation"}
+                        dictionaryId={currentDictionaryId}
+                        blur={blurItems}
+                        {...item}
+                    />
+                ))
+            }   
+            </Category>
         </div>
     );
 }
