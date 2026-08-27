@@ -4,7 +4,7 @@ import styles from "./Category.module.css"
 
 interface CategoryProps {
     name: string,
-    children: React.ReactNode,
+    children?: React.ReactNode,
     className?: string
 }
 
@@ -12,6 +12,10 @@ interface CategoryProps {
 export function Category({ name, children, className }: CategoryProps) {
     const [collapsed, setCollapsed] = useState(false);
     const collapsedBtnText = collapsed ? "+" : "-";
+
+    if (!children) {
+        return "";
+    }
     
     return (
         <div className={ `${styles.component} ${className}` }>
