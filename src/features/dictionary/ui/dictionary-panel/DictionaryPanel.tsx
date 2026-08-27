@@ -9,7 +9,7 @@ export default function DictionaryPanel() {
     const dispatch = useAppDispatch();
 
     const { dictionaries, settings} = useAppSelector(state => state.dictionarySlice);
-    const dictionaryIds = Object.keys(dictionaries);
+    const dictionaryIds = Object.keys(dictionaries).filter(id => id !== ""); // avoid empty placeholder
 
     const handleDictionaryChange = (event: React.ChangeEvent<HTMLSelectElement, HTMLSelectElement>) => {
         dispatch(setCurrentDictionary(event.currentTarget.value));
@@ -22,11 +22,13 @@ export default function DictionaryPanel() {
             
             <Select onChange={handleDictionaryChange} id="dictionary-select" value={settings.currentDictionaryId} className={styles.dictionarySwitch}>
                 {
-                    dictionaryIds.map((id, i) => (
+                    dictionaryIds.length > 0
+                    ? dictionaryIds.map((id, i) => (
                         <option value={id} key={i}>
                             {dictionaries[id].name}
                         </option>
                     ))
+                    : <option value="">&lt;no dictionaries&gt;</option>
                 }
             </Select>
 
