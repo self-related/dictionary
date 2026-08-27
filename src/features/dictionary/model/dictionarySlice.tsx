@@ -18,7 +18,7 @@ interface DictionarySlice {
         blurTranslations: boolean
     },
     dictionaries: {
-        [id: string]: { // sourceLang/targetLang OR custom
+        [id: string]: { // sourceLang;targetLang OR custom
             items: DictionaryItem[],
             name: string
         }
@@ -125,7 +125,25 @@ export const dictionarySlice = createSlice({
         )
     },
     selectors: {
-       selectDictionaryItems: (sliceState, dictionaryId: string) => sliceState.dictionaries[dictionaryId].items,
+        selectDictionaryItems: (sliceState, dictionaryId: string) => {
+            return sliceState.dictionaries[dictionaryId].items
+        },
+        selectDictionaryItemsCategorizedReversed: (sliceState, dictionaryId: string): [notLearned: DictionaryItem[], learned: DictionaryItem[]] => {
+            const dictionary = sliceState.dictionaries[dictionaryId].items;
+            const notLearned = [], learned = [];
+
+            for (let i = dictionary.length - 1; i >= 0; i--) {
+                const item = dictionary[i];
+                
+                if (item.learned) {
+                    learned.push(item);
+                } else {
+                    notLearned.push(item);
+                }
+            }
+
+            return [notLearned, learned];
+        }
     }
 });
 
@@ -134,3 +152,4 @@ export const { addItem, setCurrentDictionary, removeItem, switchLearned, switchB
 
 // selectors
 export const selectDictionaryItemsReversed = createSelector(dictionarySlice.selectors.selectDictionaryItems, items => items.slice().reverse());
+export const { selectDictionaryItemsCategorizedReversed } = dictionarySlice.selectors;
