@@ -87,7 +87,10 @@ export const dictionarySlice = createSlice({
 
             if (dictionaryId !== "" && isEmpty) {
                 delete sliceState.dictionaries[dictionaryId];
-                sliceState.settings.currentDictionaryId = "";
+
+                // set last available dictionaryId or empty
+                const dictionariesLeft = Object.keys(sliceState.dictionaries).filter(key => key !== "");
+                sliceState.settings.currentDictionaryId = dictionariesLeft.at(-1) ?? "";
             }
         },
         switchLearned: (sliceState, action: PayloadAction<{sourceText: string, dictionaryId: string}>) => {
