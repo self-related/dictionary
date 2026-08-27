@@ -29,6 +29,7 @@
         background: none;
         border: none;
         color: var(--text-color);
+        text-shadow: inherit;
     }
 }
 
