@@ -29,31 +29,36 @@
 }
 
 .navbar {
-    align-items: stretch;
-    display: flex;
-    color: inherit;
-    justify-content: center;
-    min-height: 3rem;
-    padding: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
     width: 100%;
-    gap: 1rem;
-    
-    & > p {
-        font-size: 2rem;
-        margin: 0;
-    }
+    height: min-content;
+
+    padding: 1rem;
 }
 
 .navbarButtons {
+    grid-column: 1 / 2;
     display: flex;
-    padding-top: 0.4rem;
+    padding: 0.3rem 0;
 }
 
+.navbarTitle {
+    grid-column: 2 / 3;
+    text-align: center;
+
+    margin: 0;
+
+    font-size: 1.95rem;
+    font-weight: 400;
+}
+
+
 .colorSchemeIsAutoBtnMod {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
 }
 
 .colorSchemeBtn {
-    width: 3.3rem;
-    margin: 0.2rem 0 0.2rem 0;
+    width: 3rem;
 }

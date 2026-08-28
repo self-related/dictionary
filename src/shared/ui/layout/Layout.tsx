@@ -30,10 +30,12 @@ export default function Layout({
         <div className={`${styles.layout} ${accent} ${colorSchemeCSS} ${className}`}>
             {/* Navbar */}
             <nav className={styles.navbar}>
-                <p>Dictionary</p>
                 <div className={styles.navbarButtons}>
                     <ColorSchemeBtn colorScheme={colorScheme} onClick={() => dispatch(switchColorScheme())} />
                 </div>
+                <h1 className={styles.navbarTitle}>
+                    Dictionary
+                </h1>
             </nav> 
 
             {/* Inner content */}
@@ -56,9 +58,9 @@ function ColorSchemeBtn({ colorScheme, onClick }: {
     onClick?(): void
 }) {
     const colorSchemeBtnIcon = 
-    colorScheme === "dark" ? "☽" : 
-    colorScheme === "light" ? "🌣" :
-    "☽/🌣";
+    colorScheme === "dark" ? "☽" 
+    : colorScheme === "light" ? "🌣" 
+    : "☽/🌣";
 
     const colorSchemeIsAutoCSS = colorScheme === "auto" ? styles.colorSchemeIsAutoBtnMod : "";
 
