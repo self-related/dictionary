@@ -8,11 +8,10 @@
 
 .footer {
     align-items: center;
-    background-color: var(--nav-color);
     display: flex;
     justify-content: center;
     min-height: 2rem;
-    padding: 0.5rem;
+    padding: 1rem;
     width: 100%;
     
     & > p {
@@ -31,7 +30,6 @@
 
 .navbar {
     align-items: stretch;
-    background-color: var(--nav-color);
     display: flex;
     color: inherit;
     justify-content: center;
