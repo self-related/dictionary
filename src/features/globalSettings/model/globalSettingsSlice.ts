@@ -4,14 +4,17 @@ import { exportToLocalStorage, importFromLocalStore } from "../../../shared/mode
 
 interface GlobalSettingsSlice {
     colorScheme: string,
+    accentColor: string
 }
 
 
 const sliceName = "globalSettingsSlice";
+const accentColors = ["orange"];
 
 const savedState = importFromLocalStore<GlobalSettingsSlice>(sliceName);
 const initialState: GlobalSettingsSlice = {
-    colorScheme: "auto"
+    colorScheme: "auto",
+    accentColor: "orange"
 };
 
 
@@ -26,6 +29,10 @@ export const globalSettingsSlice = createSlice({
                 case "light": slice.colorScheme = "auto"; break;
                 case "auto" : slice.colorScheme = "dark"; break;
             }
+        },
+        switchAccentColor(slice) {
+            const nextId = accentColors.findIndex(element => element === slice.accentColor) + 1;
+            slice.accentColor = accentColors.at(nextId) ?? accentColors[0];
         }
     },
     selectors: {
@@ -38,5 +45,5 @@ export const globalSettingsSlice = createSlice({
 });
 
 
-export const { switchColorScheme } = globalSettingsSlice.actions;
+export const { switchColorScheme, switchAccentColor } = globalSettingsSlice.actions;
 export const { selectColorScheme } = globalSettingsSlice.selectors;

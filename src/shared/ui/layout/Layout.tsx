@@ -1,8 +1,7 @@
-import { useState } from "react";
 import styles from "./Layout.module.css";
 import Button from "../button/Button";
 import { useAppDispatch, useAppSelector } from "../../../app/model/store/hooks";
-import { selectColorScheme, switchColorScheme } from "../../../features/globalSettings/model/globalSettingsSlice";
+import { switchAccentColor, switchColorScheme } from "../../../features/globalSettings/model/globalSettingsSlice";
 
 interface LayoutProps {
     children?: React.ReactNode | string,
@@ -14,11 +13,7 @@ export default function Layout({
     className
 }: LayoutProps) {
     const dispatch = useAppDispatch();
-
-    // TODO: get all these from settings store
-    const [accent] = useState("orangeAccent"); 
-    const colorScheme = useAppSelector(selectColorScheme);
-    console.log(`color scheme: ${colorScheme}`);
+    const { accentColor, colorScheme } = useAppSelector(state => state.globalSettingsSlice);
 
     // css mod
     const colorSchemeCSS = 
@@ -27,12 +22,18 @@ export default function Layout({
 
 
     return (
-        <div className={`${styles.layout} ${accent} ${colorSchemeCSS} ${className}`}>
+        <div className={`${styles.layout} ${accentColor}Accent ${colorSchemeCSS} ${className}`}>
             {/* Navbar */}
             <nav className={styles.navbar}>
                 <div className={styles.navbarButtons}>
                     <ColorSchemeBtn colorScheme={colorScheme} onClick={() => dispatch(switchColorScheme())} />
+
+                    {/* accent color switcher */}
+                    <Button className={ styles.accentColorBtn } onClick={() => dispatch(switchAccentColor())}>
+                        <p style={{ backgroundColor: accentColor }}> </p>
+                    </Button>
                 </div>
+
                 <h1 className={styles.navbarTitle}>
                     Dictionary
                 </h1>

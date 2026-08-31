@@ -42,6 +42,7 @@
     grid-column: 1 / 2;
     display: flex;
     padding: 0.3rem 0;
+    gap: 0.5rem;
 }
 
 .navbarTitle {
@@ -62,4 +63,21 @@
 .colorSchemeBtn {
     background: none;
     width: 3rem;
+}
+
+.accentColorBtn {
+    position: relative;
+    background-color: unset;
+    width: max-content;
+    padding: 0 0.2rem;
+    
+    & > p {
+        border-radius: 5px;
+        height: 0.3rem;
+        width: 2.5rem;
+    }
+
+    &:hover > p {
+        border: 1px solid black;
+    }
 }
