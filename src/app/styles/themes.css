@@ -98,7 +98,7 @@ body:has(.darkTheme) {
 }
 
 
-/* orange accents */
+/* color accents */
 .orangeAccent {
     --accent-color: #fb6921;
     --active-color: red;
@@ -106,6 +106,12 @@ body:has(.darkTheme) {
     --checkbox-color: #ff5500;
 }
 
+.blueAccent {
+    --accent-color: #0055ff;
+    --active-color: #2700a5;
+    --hover-color: #0099ff;
+    --checkbox-color: #0055ff;
+}
 
 /* apply defaults for current accents  */
 * {
