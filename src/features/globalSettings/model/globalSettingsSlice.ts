@@ -9,7 +9,7 @@ interface GlobalSettingsSlice {
 
 
 const sliceName = "globalSettingsSlice";
-const accentColors = ["orange", "blue"];
+const accentColors = ["orange", "blue", "lime"];
 
 const savedState = importFromLocalStore<GlobalSettingsSlice>(sliceName);
 const initialState: GlobalSettingsSlice = {

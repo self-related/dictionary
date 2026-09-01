@@ -113,6 +113,15 @@ body:has(.darkTheme) {
     --checkbox-color: #0055ff;
 }
 
+.limeAccent {
+    --accent-color: lime;
+    --active-color: #249924;
+    --hover-color: #21f721;
+    --checkbox-color: #14c101;
+}
+
+
+
 /* apply defaults for current accents  */
 * {
     accent-color: var(--accent-color);
