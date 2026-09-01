@@ -75,6 +75,7 @@
         border-radius: 5px;
         height: 0.3rem;
         width: 2.5rem;
+        border: 1px solid var(--outline-light-theme-only);
     }
 
     &:hover > p {
