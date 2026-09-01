@@ -32,6 +32,8 @@ body {
         --button-background: #e4ebf4;
         --border-color: #c1cad6;
         --nav-color: transparent;
+
+        --outline-light-theme-only: black;
     }
     
     
@@ -82,6 +84,8 @@ body {
     --button-background: #e4ebf4;
     --border-color: #c1cad6;
     --nav-color: transparent;
+
+    --outline-light-theme-only: black;
 
     /* apply defaults to inherit*/
     color: var(--text-color);
