@@ -56,6 +56,7 @@
     font-weight: 400;
 }
 
+/* shorten and reverse navbar on small screens */
 @media screen and (width < 500px) {
     .navbar {
         grid-template-columns: repeat(2, 1fr);
