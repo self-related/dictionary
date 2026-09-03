@@ -13,8 +13,10 @@
 
     min-width: fit-content;
 
-    &:not([disabled]):hover {
-        background-color: var(--hover-color);
+    @media (hover: hover) { /* exclude touch screens because they act weird */
+        &:not([disabled]):hover {
+            background-color: var(--hover-color);
+        }
     }
 
     &:not([disabled]):active {
