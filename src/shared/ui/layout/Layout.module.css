@@ -31,6 +31,7 @@
 .navbar {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-auto-flow: dense; /* for reverse on small screens */
 
     width: 100%;
     height: min-content;
@@ -53,6 +54,23 @@
 
     font-size: 1.95rem;
     font-weight: 400;
+}
+
+@media screen and (width < 500px) {
+    .navbar {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .navbarButtons {
+        grid-column: 2 / 3;
+        justify-content: end;
+    }
+
+    .navbarTitle {
+        grid-column: 1 / 2;
+        text-align: start;
+        padding-left: 0.5rem;
+    }
 }
 
 
