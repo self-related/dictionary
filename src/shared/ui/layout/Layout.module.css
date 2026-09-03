@@ -60,6 +60,7 @@
     /* shorten and reverse navbar on small screens */
     .navbar {
         grid-template-columns: repeat(2, 1fr);
+        padding-top: 1.5rem;
     }
     .navbarButtons {
         grid-column: 2 / 3;
@@ -68,7 +69,6 @@
     .navbarTitle {
         grid-column: 1 / 2;
         text-align: start;
-        padding-left: 0.5rem;
     }
 
     /* decrease padding for main*/
