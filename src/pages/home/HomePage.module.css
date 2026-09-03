@@ -32,7 +32,14 @@
     }
 
     .appSection {
+        border: none;
         min-width: 350px;
         width: 100%;
+    }
+}
+
+@media screen and (width < 500px) {
+    .appSection {
+        padding: 0.7rem;
     }
 }
