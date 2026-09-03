@@ -18,7 +18,7 @@
     row-gap: 0.5rem;
     min-width: 0;
 
-    justify-content: center;
+    justify-content: space-around;
 
     & > p {
         margin: 0;
@@ -54,26 +54,36 @@
 .buttonsWrap {
     display: flex;
     flex-direction: column;
-
+    
     & button {
         align-content: center;
         background: none;
         border: none;
         border-radius: 2px;
-
+        
         cursor: pointer;
         font-size: 0.9rem;
-
+        
         padding: 0.3rem;
-
+        
         text-shadow: inherit;
-
-
+        
+        
         &:hover {
             background-color: var(--hover-color);
         }
         &:active {
             background-color: var(--active-color);
+        }
+        
+    }
+
+    @media (hover: none) {
+        row-gap: 0.3rem;
+        & button {
+            background-color: var(--background-color-2);
+            padding: 0.4rem !important;
+            ;
         }
     }
 }
@@ -92,6 +102,6 @@
 .optionsBtn {
     color: inherit;
     font-weight: 600;
-    writing-mode: vertical-lr;
-    padding: 0.3rem 0 0.3rem 0.3rem !important;
+    /* writing-mode: vertical-lr; */
+    /* padding: 0.3rem 0 0.3rem 0.3rem !important; */
 }

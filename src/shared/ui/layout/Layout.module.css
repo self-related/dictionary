@@ -56,21 +56,24 @@
     font-weight: 400;
 }
 
-/* shorten and reverse navbar on small screens */
 @media screen and (width < 500px) {
+    /* shorten and reverse navbar on small screens */
     .navbar {
         grid-template-columns: repeat(2, 1fr);
     }
-
     .navbarButtons {
         grid-column: 2 / 3;
         justify-content: end;
     }
-
     .navbarTitle {
         grid-column: 1 / 2;
         text-align: start;
         padding-left: 0.5rem;
+    }
+
+    /* decrease padding for main*/
+    .main {
+        padding: 0.3rem;
     }
 }
 
