@@ -82,7 +82,7 @@ export default function Item({
                     className={`${styles.learnedBtn} ${checkboxCSS}`} 
                     onClick={() => dispatch(switchLearned({sourceText, dictionaryId}))}
                 >
-                    🗸
+                    ✓
                 </button>
 
                 <button
