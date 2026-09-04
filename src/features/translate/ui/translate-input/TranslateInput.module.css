@@ -1,5 +1,6 @@
 .translateInput {
     display: block;
+    padding-bottom: 1rem;
 }
 
 .textAreaWrap {
@@ -53,13 +54,18 @@
     }
 }
 
-.buttonsWrap {
+.bottomPanel {
     display: flex;
     column-gap: 7px;
-    justify-content: end;
+    justify-content: right;
     margin-top: 0.5rem;
     height: 2rem;
     width: 100%;
+}
+
+.bottomPanelWrap {
+    gap: 7px;
+    display: grid;
 }
 
 .autoTranslateLabel {
@@ -72,6 +78,18 @@
         height: 0.9rem;
         width: 0.9rem;
         margin-left: 0.5rem;
+    }
+}
+
+.apiSelect {
+    background: none;
+    padding-right: 0.1rem;
+
+    margin-right: 0.5rem;
+    margin-top: 1px;
+
+    &:hover {
+        background-color: unset;
     }
 }
 

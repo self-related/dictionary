@@ -4,6 +4,7 @@ import Button from "../../../../shared/ui/button/Button";
 import { translateApiSlice, useLazyTranslateQuery } from "../../api/translateApiSlice";
 import { useAppDispatch, useAppSelector } from "../../../../app/model/store/hooks";
 import { selectTranslateQueryPayload, setCustomTranslation, setSourceText, switchAutoTranslate } from "../../model/translateSlice";
+import Select from "../../../../shared/ui/select/Select";
 
 
 interface TranslateInputProps {
@@ -74,7 +75,9 @@ export default function TranslateInput({ className = "" }: TranslateInputProps) 
             </div>
 
             {/* checkbox and buttons  */}
-            <div className={styles.buttonsWrap}>
+            <div className={ styles.bottomPanel }>
+                <ApiSelect />
+ 
                 <label htmlFor="autoTranslate" className={styles.autoTranslateLabel}>
                     Auto-translation
                     <input 
@@ -88,5 +91,15 @@ export default function TranslateInput({ className = "" }: TranslateInputProps) 
                 <Button onClick={handleFetchTranslation}>Translate</Button>
             </div>
         </div>
+    );
+}
+
+
+function ApiSelect() {
+    return (
+        // temp placeholders
+        <Select value="google" className={ styles.apiSelect }>
+            <option value="google">Google</option>
+        </Select>
     );
 }
